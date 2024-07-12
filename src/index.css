@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwindcss aspect-ratio;
+@tailwindcss forms;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+@font-face {
+  font-family: 'MabryPro-Black';
+  src: local('MabryPro-Black'), url("./fonts/MabryPro-Black.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'MabryPro-Light';
+  src: local('MabryPro-Light'), url("./fonts/MabryPro-Light.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'MabryPro-Regular';
+  src: local('MabryPro-Regular'), url("./fonts/MabryPro-Regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'MabryPro-Medium';
+  src: local('MabryPro-Medium'), url("./fonts/MabryPro-Medium.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'MabryPro-Bold';
+  src: local('MabryPro-Bold'), url("./fonts/MabryPro-Bold.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'MabryPro-BoldItalic';
+  src: local('MabryPro-BoldItalic'), url("./fonts/MabryPro-BlackItalic.ttf") format('truetype');
+}
+/* Hamburger Menu */
+.hamburger {
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+}
+
+#quantity,
+#quantity:focus,
+#quantity:active {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  outline: none;
+}
+
+.home-grid-small  {
+  display: grid;
+  grid-template-columns: 10rem 10rem ;
+  grid-gap: 1rem;
+  grid-template-rows: repeat(3, 10rem);
+}
+
+.home-grid{
+  display: grid;
+  grid-template-columns: 20rem 20rem 20rem 10rem;
+  grid-gap: 2rem;
+  grid-template-rows: repeat(3, 20rem);
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.open {
+  transform: rotate(90deg);
+  transform: translateY(0px);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translate(6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translate(-6px);
+}

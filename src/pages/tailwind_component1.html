@@ -1,0 +1,593 @@
+<div classNameName="bg-white">
+  {/* <!--
+    Mobile menu
+
+    Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+  --> */}
+  <div classNameName="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+    {/* <!--
+      Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+      Entering: "transition-opacity ease-linear duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "transition-opacity ease-linear duration-300"
+        From: "opacity-100"
+        To: "opacity-0"
+    --> */}
+    <div classNameName="fixed inset-0 bg-black bg-opacity-25"></div>
+
+    <div classNameName="fixed inset-0 z-40 flex">
+      {/* <!--
+        Off-canvas menu, show/hide based on off-canvas menu state.
+
+        Entering: "transition ease-in-out duration-300 transform"
+          From: "-translate-x-full"
+          To: "translate-x-0"
+        Leaving: "transition ease-in-out duration-300 transform"
+          From: "translate-x-0"
+          To: "-translate-x-full"
+      --> */}
+      <div classNameName="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+        <div classNameName="flex px-4 pb-2 pt-5">
+          <button type="button" classNameName="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+            <span classNameName="absolute -inset-0.5"></span>
+            <span classNameName="sr-only">Close menu</span>
+            <svg classNameName="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* <!-- Links --> */}
+        <div classNameName="mt-2">
+          <div classNameName="border-b border-gray-200">
+            <div classNameName="-mb-px flex space-x-8 px-4" aria-orientation="horizontal" role="tablist">
+              {/* <!-- Selected: "border-indigo-600 text-indigo-600", Not Selected: "border-transparent text-gray-900" --> */}
+              <button id="tabs-1-tab-1" classNameName="border-transparent text-gray-900 flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium" aria-controls="tabs-1-panel-1" role="tab" type="button">Women</button>
+              {/* <!-- Selected: "border-indigo-600 text-indigo-600", Not Selected: "border-transparent text-gray-900" --> */}
+              <button id="tabs-1-tab-2" classNameName="border-transparent text-gray-900 flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">Men</button>
+            </div>
+          </div>
+
+          {/* <!-- 'Women' tab panel, show/hide based on tab state. --> */}
+          <div id="tabs-1-panel-1" classNameName="space-y-10 px-4 pb-8 pt-10" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
+            <div classNameName="grid grid-cols-2 gap-x-4">
+              <div classNameName="group relative text-sm">
+                <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                  <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." classNameName="object-cover object-center"/>
+                </div>
+                <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                  <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                  New Arrivals
+                </a>
+                <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+              </div>
+              <div classNameName="group relative text-sm">
+                <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up " classNameName="object-cover object-center"/>
+                                                 
+                </div>
+                <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                  <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                  Basic Tees
+                </a>
+                <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+              </div>
+            </div>
+            <div>
+              <p id="women-clothing-heading-mobile" classNameName="font-medium text-gray-900">Clothing</p>
+              <ul role="list" aria-labelledby="women-clothing-heading-mobile" classNameName="mt-6 flex flex-col space-y-6">
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Tops</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Dresses</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Pants</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Denim</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Sweaters</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">T-Shirts</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Jackets</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Activewear</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Browse All</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p id="women-accessories-heading-mobile" classNameName="font-medium text-gray-900">Accessories</p>
+              <ul role="list" aria-labelledby="women-accessories-heading-mobile" classNameName="mt-6 flex flex-col space-y-6">
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Watches</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Wallets</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Bags</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Sunglasses</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Hats</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Belts</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p id="women-brands-heading-mobile" classNameName="font-medium text-gray-900">Brands</p>
+              <ul role="list" aria-labelledby="women-brands-heading-mobile" classNameName="mt-6 flex flex-col space-y-6">
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Full Nelson</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">My Way</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Re-Arranged</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Counterfeit</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Significant Other</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {/* <!-- 'Men' tab panel, show/hide based on tab state. --> */}
+          <div id="tabs-1-panel-2" classNameName="space-y-10 px-4 pb-8 pt-10" aria-labelledby="tabs-1-tab-2" role="tabpanel" tabindex="0">
+            <div classNameName="grid grid-cols-2 gap-x-4">
+              <div classNameName="group relative text-sm">
+                <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                  <img src="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg" alt="Drawstring top with elastic loop closure and textured interior padding." classNameName="object-cover object-center"/>
+                </div>
+                <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                  <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                  New Arrivals
+                </a>
+                <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+              </div>
+              <div classNameName="group relative text-sm">
+                <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                  <img src="https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg" alt="Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt." classNameName="object-cover object-center"/>
+                </div>
+                <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                  <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                  Artwork Tees
+                </a>
+                <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+              </div>
+            </div>
+            <div>
+              <p id="men-clothing-heading-mobile" classNameName="font-medium text-gray-900">Clothing</p>
+              <ul role="list" aria-labelledby="men-clothing-heading-mobile" classNameName="mt-6 flex flex-col space-y-6">
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Tops</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Pants</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Sweaters</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">T-Shirts</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Jackets</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Activewear</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Browse All</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p id="men-accessories-heading-mobile" classNameName="font-medium text-gray-900">Accessories</p>
+              <ul role="list" aria-labelledby="men-accessories-heading-mobile" classNameName="mt-6 flex flex-col space-y-6">
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Watches</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Wallets</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Bags</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Sunglasses</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Hats</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Belts</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p id="men-brands-heading-mobile" classNameName="font-medium text-gray-900">Brands</p>
+              <ul role="list" aria-labelledby="men-brands-heading-mobile" classNameName="mt-6 flex flex-col space-y-6">
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Re-Arranged</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Counterfeit</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">Full Nelson</a>
+                </li>
+                <li classNameName="flow-root">
+                  <a href="#" classNameName="-m-2 block p-2 text-gray-500">My Way</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div classNameName="space-y-6 border-t border-gray-200 px-4 py-6">
+          <div classNameName="flow-root">
+            <a href="#" classNameName="-m-2 block p-2 font-medium text-gray-900">Company</a>
+          </div>
+          <div classNameName="flow-root">
+            <a href="#" classNameName="-m-2 block p-2 font-medium text-gray-900">Stores</a>
+          </div>
+        </div>
+
+        <div classNameName="space-y-6 border-t border-gray-200 px-4 py-6">
+          <div classNameName="flow-root">
+            <a href="#" classNameName="-m-2 block p-2 font-medium text-gray-900">Sign in</a>
+          </div>
+          <div classNameName="flow-root">
+            <a href="#" classNameName="-m-2 block p-2 font-medium text-gray-900">Create account</a>
+          </div>
+        </div>
+
+        <div classNameName="border-t border-gray-200 px-4 py-6">
+          <a href="#" classNameName="-m-2 flex items-center p-2">
+            <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" classNameName="block h-auto w-5 flex-shrink-0"/>
+            <span classNameName="ml-3 block text-base font-medium text-gray-900">CAD</span>
+            <span classNameName="sr-only">, change currency</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header classNameName="relative bg-white">
+    {/* <p classNameName="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">Get free delivery on orders over $100</p> */}
+
+    <nav aria-label="Top" classNameName="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div classNameName="border-b border-gray-200">
+        <div classNameName="flex h-16 items-center">
+          {/* <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. --> */}
+          <button type="button" classNameName="relative rounded-md bg-white p-2 text-gray-400 lg:hidden">
+            <span classNameName="absolute -inset-0.5"></span>
+            <span classNameName="sr-only">Open menu</span>
+            <svg classNameName="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+
+          {/* <!-- Logo --> */}
+          <div classNameName="ml-4 flex lg:ml-0">
+            <a href="#">
+              <span classNameName="sr-only">Your Company</span>
+              {/* <img classNameName="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="he"/> */}
+            </a>
+          </div>
+
+          {/* <!-- Flyout menus --> */}
+          <div classNameName="hidden lg:ml-8 lg:block lg:self-stretch">
+            <div classNameName="flex h-full space-x-8">
+              <div classNameName="flex">
+                <div classNameName="relative flex">
+                  {/* <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
+                  <button type="button" classNameName="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Women</button>
+                </div>
+
+                {/* <!--
+                  'Women' flyout menu, show/hide based on flyout menu state.
+
+                  Entering: "transition ease-out duration-200"
+                    From: "opacity-0"
+                    To: "opacity-100"
+                  Leaving: "transition ease-in duration-150"
+                    From: "opacity-100"
+                    To: "opacity-0"
+                --> */}
+                <div classNameName="absolute inset-x-0 top-full text-sm text-gray-500">
+                  {/* <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow --> */}
+                  <div classNameName="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true"></div>
+
+                  <div classNameName="relative bg-white">
+                    <div classNameName="mx-auto max-w-7xl px-8">
+                      <div classNameName="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                        <div classNameName="col-start-2 grid grid-cols-2 gap-x-8">
+                          <div classNameName="group relative text-base sm:text-sm">
+                            <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." classNameName="object-cover object-center"/>
+                            </div>
+                            <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                              <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                              New Arrivals
+                            </a>
+                            <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+                          </div>
+                          <div classNameName="group relative text-base sm:text-sm">
+                            <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees." classNameName="object-cover object-center"/>
+                            </div>
+                            <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                              <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                              Basic Tees
+                            </a>
+                            <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+                          </div>
+                        </div>
+                        <div classNameName="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                          <div>
+                            <p id="Clothing-heading" classNameName="font-medium text-gray-900">Clothing</p>
+                            <ul role="list" aria-labelledby="Clothing-heading" classNameName="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Tops</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Dresses</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Pants</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Denim</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Sweaters</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">T-Shirts</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Jackets</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Activewear</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Browse All</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div>
+                            <p id="Accessories-heading" classNameName="font-medium text-gray-900">Accessories</p>
+                            <ul role="list" aria-labelledby="Accessories-heading" classNameName="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Watches</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Wallets</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Bags</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Sunglasses</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Hats</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Belts</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div>
+                            <p id="Brands-heading" classNameName="font-medium text-gray-900">Brands</p>
+                            <ul role="list" aria-labelledby="Brands-heading" classNameName="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Full Nelson</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">My Way</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Re-Arranged</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Counterfeit</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Significant Other</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div classNameName="flex">
+                <div classNameName="relative flex">
+                  {/* <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
+                  <button type="button" classNameName="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Men</button>
+                </div>
+
+                {/* <!--
+                  'Men' flyout menu, show/hide based on flyout menu state.
+
+                  Entering: "transition ease-out duration-200"
+                    From: "opacity-0"
+                    To: "opacity-100"
+                  Leaving: "transition ease-in duration-150"
+                    From: "opacity-100"
+                    To: "opacity-0"
+                --> */}
+                <div classNameName="absolute inset-x-0 top-full text-sm text-gray-500">
+                  {/* <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow --> */}
+                  <div classNameName="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true"></div>
+
+                  <div classNameName="relative bg-white">
+                    <div classNameName="mx-auto max-w-7xl px-8">
+                      <div classNameName="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                        <div classNameName="col-start-2 grid grid-cols-2 gap-x-8">
+                          <div classNameName="group relative text-base sm:text-sm">
+                            <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <img src="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg" alt="Drawstring top with elastic loop closure and textured interior padding." classNameName="object-cover object-center"/>
+                            </div>
+                            <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                              <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                              New Arrivals
+                            </a>
+                            <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+                          </div>
+                          <div classNameName="group relative text-base sm:text-sm">
+                            <div classNameName="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <img src="https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg" alt="Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt." classNameName="object-cover object-center"/>
+                            </div>
+                            <a href="#" classNameName="mt-6 block font-medium text-gray-900">
+                              <span classNameName="absolute inset-0 z-10" aria-hidden="true"></span>
+                              Artwork Tees
+                            </a>
+                            <p aria-hidden="true" classNameName="mt-1">Shop now</p>
+                          </div>
+                        </div>
+                        <div classNameName="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                          <div>
+                            <p id="Clothing-heading" classNameName="font-medium text-gray-900">Clothing</p>
+                            <ul role="list" aria-labelledby="Clothing-heading" classNameName="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Tops</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Pants</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Sweaters</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">T-Shirts</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Jackets</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Activewear</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Browse All</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div>
+                            <p id="Accessories-heading" classNameName="font-medium text-gray-900">Accessories</p>
+                            <ul role="list" aria-labelledby="Accessories-heading" classNameName="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Watches</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Wallets</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Bags</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Sunglasses</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Hats</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Belts</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div>
+                            <p id="Brands-heading" classNameName="font-medium text-gray-900">Brands</p>
+                            <ul role="list" aria-labelledby="Brands-heading" classNameName="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Re-Arranged</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Counterfeit</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">Full Nelson</a>
+                              </li>
+                              <li classNameName="flex">
+                                <a href="#" classNameName="hover:text-gray-800">My Way</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" classNameName="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Company</a>
+              <a href="#" classNameName="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a>
+            </div>
+          </div>
+
+          <div classNameName="ml-auto flex items-center">
+            <div classNameName="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+              <a href="#" classNameName="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
+              <span classNameName="h-6 w-px bg-gray-200" aria-hidden="true"></span>
+              <a href="#" classNameName="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
+            </div>
+
+            <div classNameName="hidden lg:ml-8 lg:flex">
+              <a href="#" classNameName="flex items-center text-gray-700 hover:text-gray-800">
+                <img src="https://tailwindui.com/img/flags/flag-canada.svg1" alt="" classNameName="block h-auto w-5 flex-shrink-0"/>
+                <span classNameName="ml-3 block text-sm font-medium">CAD</span>
+                <span classNameName="sr-only">, change currency</span>
+              </a>
+            </div>
+
+            {/* <!-- Search --> */}
+            <div classNameName="flex lg:ml-6">
+              <a href="#" classNameName="p-2 text-gray-400 hover:text-gray-500">
+                <span classNameName="sr-only">Search</span>
+                <svg classNameName="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </a>
+            </div>
+
+            {/* <!-- Cart --> */}
+            <div classNameName="ml-4 flow-root lg:ml-6">
+              <a href="#" classNameName="group -m-2 flex items-center p-2">
+                <svg classNameName="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span classNameName="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                <span classNameName="sr-only">items in cart, view bag</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+</div>
