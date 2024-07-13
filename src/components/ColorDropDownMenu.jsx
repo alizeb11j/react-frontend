@@ -10,15 +10,23 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
     setSelectedItem(e.target.value);
     // console.log(menu_open);
   };
+  var nua = navigator.userAgent;
+  var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
+  if(is_android) {
+    $('select.form-control').removeClass('form-control').css('width', '100%');
 
+}
   return (
     <>
+      
+
+
       <div className="dropDownMenu ">
         {/* <p>You have selected {selectedItem}</p> */}
 
         <select
           className={
-            "  rounded-3xl focus:box-shadow-none focus:border-0 focus:shadow-none focus:outline-none [-webkit-appearance:none]"
+            "rounded-3xl focus:box-shadow-none focus:border-0 focus:shadow-none focus:outline-none [-webkit-appearance:none]"
           }
           name="item-selected"
           value={selectedItem}
