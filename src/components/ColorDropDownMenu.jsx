@@ -11,16 +11,16 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
     // console.log(menu_open);
   };
   var nua = navigator.userAgent;
-  var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
-  if(is_android) {
-    $('select.form-control').removeClass('form-control').css('width', '100%');
-
-}
+  var is_android =
+    nua.indexOf("Mozilla/5.0") > -1 &&
+    nua.indexOf("Android ") > -1 &&
+    nua.indexOf("AppleWebKit") > -1 &&
+    !(nua.indexOf("Chrome") > -1);
+  if (is_android) {
+    $("select.form-control").removeClass("form-control").css("width", "100%");
+  }
   return (
     <>
-      
-
-
       <div className="dropDownMenu ">
         {/* <p>You have selected {selectedItem}</p> */}
 
@@ -39,7 +39,7 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
                 backgroundColor: `#${option_val}`,
                 fontFamily: "MabryPro-Medium",
               }}
-              dropDownStyle={{backgroundColor: `#${option_val}`}}
+              dropDownStyle={{ backgroundColor: `#${option_val}` }}
               className="rounded-3xl"
               value={option_val}
             >
@@ -53,12 +53,8 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
                 >
                   <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                 </svg>
-                <div>
-                {option_val}
-                </div>
+                <div>{option_val}</div>
               </div>
-
-              
             </option>
           ))}
         </select>
