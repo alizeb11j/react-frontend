@@ -36,25 +36,17 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
           {options.map((option_val) => (
             <option
               style={{
-                backgroundColor: `#${option_val}!important;`,
+                background: `#${option_val}`,
                 fontFamily: "MabryPro-Medium",
+                backgroundColor: `#${option_val}`,
+                color: `#${option_val}`,
+                textDecorationColor: "#000000"
               }}
-              dropDownStyle={{ backgroundColor: `#${option_val}` }}
+              
               className="rounded-3xl"
               value={option_val}
             >
-              <div className="flex flex-row ">
-                <svg
-                  className={`fill-[#${option_val}]`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="14"
-                  width="14"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
-                </svg>
-                <div>{option_val}</div>
-              </div>
+                {option_val}
             </option>
           ))}
         </select>
