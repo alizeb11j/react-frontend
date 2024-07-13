@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
   // console.log(options);
   const [selectedItem, setSelectedItem] = useState("12cccc");
@@ -34,6 +34,7 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
               className="rounded-3xl"
               value={option_val}
             >
+              <FontAwesomeIcon icon={"faCircle"} size="sm" style={{color: `#${option_val}`,}} />
               {option_val}
             </option>
           ))}
