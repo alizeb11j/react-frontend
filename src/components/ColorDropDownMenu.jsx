@@ -31,15 +31,15 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
           name="item-selected"
           value={selectedItem}
           onChange={handleChange}
-          style={{ backgroundColor: `#${selectedItem}` }}
+          style={{ backgroundColor: `#${selectedItem}!important` }}
         >
           {options.map((option_val) => (
             <option
               style={{
-                backgroundColor: `#${option_val}`,
+                backgroundColor: `#${option_val}!important;`,
                 fontFamily: "MabryPro-Medium",
               }}
-              dropDownStyle={{ backgroundColor: `#${option_val}` }}
+              dropDownStyle={{ backgroundColor: `#${option_val}!important;` }}
               className="rounded-3xl"
               value={option_val}
             >
