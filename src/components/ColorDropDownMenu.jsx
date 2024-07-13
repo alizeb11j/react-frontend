@@ -31,6 +31,7 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
                 backgroundColor: `#${option_val}`,
                 fontFamily: "MabryPro-Medium",
               }}
+              dropDownStyle={{backgroundColor: `#${option_val}`}}
               className="rounded-3xl"
               value={option_val}
             >
