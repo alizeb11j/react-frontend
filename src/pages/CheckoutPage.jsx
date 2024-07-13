@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/Footer";
 
-const ContactForm = () => {
+const CheckoutPage = () => {
+  
   const navigate = useNavigate();
+//   const notify = () => {
+//     // inbuilt-notification
+//     // toast.warning("Danger");
+//     // inbuilt-notification
+//     toast.success("Order Placed Successfully");
+
+// };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,7 +57,17 @@ const ContactForm = () => {
     } else {
       console.log(formData);
       // Here you would typically send the form data to a server
-      navigate("/");
+      toast.success("Order Placed Successfully", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+        theme: "dark",
+        
+        });
+      
 
     }
   };
@@ -60,10 +80,10 @@ const ContactForm = () => {
           {/** For center column at max 1280px */}
           <div className="lg:w-[20rem] my-8">
             <h1 className="text-3xl font-bold mb-6 text-center mt-5" style={{ fontFamily: "MabryPro-Light" }}>
-              Contact Us
+              Checkout
             </h1>
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+              <div className="mb-4 justify-center items-center">
                 <label htmlFor="name" className="block mb-2 text-sm" style={{ fontFamily: "MabryPro-Light" }}>
                   Name
                 </label>
@@ -108,47 +128,39 @@ const ContactForm = () => {
                   onChange={handleChange}
                   className="w-full bg-gray-100 text-black rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7bf5f3]"
                   style={{ fontFamily: "MabryPro-Light" }}
+                  required
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
                 )}
               </div>
+
               <div className="mb-4">
-                <label htmlFor="subject" className="block mb-2 text-sm" style={{ fontFamily: "MabryPro-Light" }}>
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full bg-gray-100 text-black rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7bf5f3]"
-                  style={{ fontFamily: "MabryPro-Light" }}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="message" className="block mb-2 text-sm" style={{ fontFamily: "MabryPro-Light" }}>
-                  Message
+                <label htmlFor="address" className="block mb-2 text-sm" style={{ fontFamily: "MabryPro-Light" }}>
+                  Address
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+                  id="address"
+                  name="address"
+                  value={formData.address}
                   onChange={handleChange}
                   className="w-full bg-gray-100 text-black rounded px-3 py-2 h-32 focus:outline-none focus:ring-2 focus:ring-[#7bf5f3]"
                   style={{ fontFamily: "MabryPro-Light" }}
                   required
                 ></textarea>
               </div>
+              <div className="flex flex-row justify-center items-center ">
+
               <button
                 type="submit"
-                className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black"
-                style={{ fontFamily: "MabryPro-Light" }}
-              >
-                Send Message
+                  className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black justify-center items-center "
+                  style={{ maxWidth: "250px", width: "200px" }}
+                  // onClick={() => { toast.success("Order Placed Successfully");}}
+                >
+                  <ToastContainer />
+                Order
               </button>
+              </div>
             </form>
           </div>
         </div>
@@ -159,4 +171,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default CheckoutPage;

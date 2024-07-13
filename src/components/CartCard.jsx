@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import QuantityButton from "./QuantityButton";
 
@@ -12,33 +12,31 @@ const CartCard = ({
   price,
   bg = "bg-zinc-700",
 }) => {
-    const [pkgFromChild, setPkgFromChild] = useState(12);
-    // const [selectedColor, setSelectedColor] = useState(userColorCode[0]);
-    const [qtyFromChild, setqtyFromChild] = useState(1);
-    const handlePkgFromChild = (pkg) => {
-      setPkgFromChild(pkg);
-      // console.log(data);
-    };
-  
-    const handleQtyFromChild = (qty) => {
-      setqtyFromChild(qty);
-      // console.log(data);
-    };
+  const [pkgFromChild, setPkgFromChild] = useState(12);
+  // const [selectedColor, setSelectedColor] = useState(userColorCode[0]);
+  const [qtyFromChild, setqtyFromChild] = useState(1);
+  const handlePkgFromChild = (pkg) => {
+    setPkgFromChild(pkg);
+    // console.log(data);
+  };
+
+  const handleQtyFromChild = (qty) => {
+    setqtyFromChild(qty);
+    // console.log(data);
+  };
   return (
     <>
-      <div className="flex flex-row items-center justify-center gap-x-5 mx-auto py-5">
-        <div className="group relative">
-          <img
-            src={img_name}
-            alt="Image"
-            className="min-w-36 h-60 object-contain rounded-lg"
-          />
-        </div>
+      <div className="flex flex-row  gap-x-3 px-5 mx-auto py-5">
+        <img
+          src={img_name}
+          alt="Image"
+          className="min-w-36 h-60 object-contain rounded-lg"
+        />
+
         <div className={`${bg} px-4 rounded-lg shadow-md `}>
-          
           <div className="flex flex-col items-center justify-center gap-3">
             <p
-              className="font-light text-white text-base text-left"
+              className="font-light text-white text-base text-center"
               style={{ fontFamily: "MabryPro-Bold" }}
             >
               {prodName}
@@ -62,7 +60,7 @@ const CartCard = ({
             >
               {`Price: ${price}`}
             </p>
-            <QuantityButton  sendData={handleQtyFromChild} />
+            <QuantityButton sendData={handleQtyFromChild} />
           </div>
         </div>
       </div>

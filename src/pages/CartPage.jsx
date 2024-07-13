@@ -11,7 +11,7 @@ const CartPage = () => {
           My Cart
         </h1>
         <div className="flex flex-col justify-center items-center md:flex-row">
-          <div className="w-1/3 space-y-4 mx-5 py-5 px-3">
+          <div className="w-1/3 space-y-4 mx-5 py-5 ">
             <CartCard
               prodName="Polka Cone"
               prodDescription="Egyption Raw Material, Fast colors, count 10/2"
@@ -61,8 +61,8 @@ const CartPage = () => {
               </p>
             </div>
             <Link
-              to="/"
-              className="bg-zinc-700 rounded-xl text-white text-base text-center w-fit mx-auto px-3 py-3  "
+              to="/checkout"
+              className=" bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black justify-center items-center   "
               style={{ fontFamily: "MabryPro-Bold" }}
             >
               Proceed to Checkout

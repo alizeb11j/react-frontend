@@ -28,15 +28,15 @@ const ProdSpecsCard = ({
 
   return (
     <>
-      <div className={`${bg} px-4 rounded-lg shadow-md space-y-14 w-2/5`}>
+      <div className={`${bg} px-4 rounded-lg shadow-md space-y-14  `}>
         <h1
-          className=" text-white text-2xl text-left"
+          className=" text-white text-2xl text-center md:text-left"
           style={{ fontFamily: "MabryPro-Bold" }}
         >
           {prodName}
         </h1>
         <p
-          className=" text-[#878888] text-base text-left"
+          className=" text-[#878888] text-base text-center  md:text-left"
           style={{ fontFamily: "MabryPro-Light" }}
         >
           {prodDescription}
@@ -44,7 +44,7 @@ const ProdSpecsCard = ({
 
         <div className=" flex flex-col w-fit gap-y-10 pl-1">
           {/* Packaging  */}
-          <div className="flex flex-row items-center justify-center w-64 gap-x-28 ">
+          <div className="flex  items-center justify-center w-64 gap-x-28 flex-row">
             <p
               className=" text-white text-base text-left"
               style={{ fontFamily: "MabryPro-Light" }}
@@ -125,8 +125,8 @@ const ProdSpecsCard = ({
           </div>
             <Link
               to="/cart"
-              className="bg-zinc-500 rounded-xl text-white text-base text-center w-fit mx-auto px-3 py-3  "
-              style={{ fontFamily: "MabryPro-Light" }}
+              className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
+              style={{ fontFamily: "MabryPro-Bold" }}
             >
               Add to Cart
             </Link>

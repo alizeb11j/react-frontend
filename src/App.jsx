@@ -14,6 +14,7 @@ import SingleProduct, { prodLoader } from "./pages/SingleProduct";
 import ContactForm from "./pages/ContactForm";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
 
@@ -22,7 +23,8 @@ const App = () => {
       <Route path="/" element={<MainLayout />}>
         <Route path="/test" element={<TestComponent />} />
         <Route path="/contact" element={<ContactForm />} />
-        <Route path="/cart" element={<CartPage  />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage  />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route
