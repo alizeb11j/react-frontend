@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+
 import Footer from "../components/Footer";
 import prod_img1 from "../assets/images/prod_img1.png";
 import prod_img2 from "../assets/images/prod_img2.png";
-import HomeCards from "../components/HomeCards";
+import HomeCards from "../components/HomeCards"
+
 import {
   Tabs,
   TabsHeader,
@@ -110,7 +111,7 @@ const ProductsPage = () => {
           className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           <TabsHeader
-            className="bg-zinc-200 text-white overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="bg-[#b424ecdc] text-white overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             indicatorProps={{
               className: "bg-zinc-800 shadow-none !text-gray-900",
             }}

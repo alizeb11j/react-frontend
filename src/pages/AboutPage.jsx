@@ -14,7 +14,7 @@ const AboutPage = () => {
           Working From Generations, For Generations.
         </div>
         <div className="flex flex-col container bg-zinc-950  mx-auto py-5 ">
-          <div className=" flex flex-row justify-center items-center gap-x-5">
+          <div className=" flex flex-col-reverse justify-center items-center gap-x-5 md:flex-row">
             <p
               className="w-4/6 text-white  text-sm md:text-base font-medium"
               style={{ fontFamily: "MabryPro-Medium" }}
@@ -32,7 +32,7 @@ const AboutPage = () => {
               alt=""
             />
           </div>
-          <div className=" flex flex-row justify-center items-center gap-x-5">
+          <div className=" flex flex-col justify-center items-center gap-x-5 md:flex-row">
             <img
               className="w-3/12 h-60 object-contain rounded-3xl"
               src={about_img2}
@@ -53,7 +53,7 @@ const AboutPage = () => {
               local threads.
             </p>
           </div>
-          <div className=" flex flex-row justify-center items-center gap-x-5">
+          <div className=" flex flex-col-reverse justify-center items-center gap-x-5 md:flex-row">
             <p
               className="w-4/6 text-white text-sm md:text-base font-medium"
               style={{ fontFamily: "MabryPro-Medium" }}
