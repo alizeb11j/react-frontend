@@ -15,9 +15,10 @@ import ContactForm from "./pages/ContactForm";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
-
+  <Analytics/>
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
@@ -35,6 +36,7 @@ const App = () => {
         <Route index element={<HomePage />} />
       </Route>
     )
+    
   );
 
   return <RouterProvider router={router} />;
