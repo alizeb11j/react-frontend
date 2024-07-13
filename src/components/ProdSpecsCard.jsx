@@ -28,7 +28,7 @@ const ProdSpecsCard = ({
 
   return (
     <>
-      <div className={`${bg} px-4 rounded-lg shadow-md space-y-14  `}>
+      <div className={`${bg} px-4 rounded-lg shadow-md space-y-14 container flex flex-col  `}>
         <h1
           className=" text-white text-2xl text-center md:text-left"
           style={{ fontFamily: "MabryPro-Bold" }}

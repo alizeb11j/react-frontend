@@ -26,7 +26,7 @@ const CartCard = ({
   };
   return (
     <>
-      <div className="flex flex-row  gap-x-3 px-5 mx-auto py-5">
+      <div className="flex flex-col   gap-x-3 px-5 mx-auto py-5 md:flex-row">
         <img
           src={img_name}
           alt="Image"
@@ -43,19 +43,19 @@ const CartCard = ({
             </p>
 
             <p
-              className="font-light text-white text-base text-left"
+              className="font-light text-white text-base text-center md:text-left"
               style={{ fontFamily: "MabryPro-Light" }}
             >
               {`Packaging: ${prodPackaging}`}
             </p>
             <p
-              className={`font-light text-white text-base text-left bg-[#${prodColor}]`}
+              className={`font-light text-white text-base text-center md:text-left bg-[#${prodColor}]`}
               style={{ fontFamily: "MabryPro-Light" }}
             >
               {`Color: ${prodColor}`}
             </p>
             <p
-              className=" font-bold text-white text-base"
+              className=" font-bold text-white text-base text-center md:text-left"
               style={{ fontFamily: "MabryPro-Light" }}
             >
               {`Price: ${price}`}

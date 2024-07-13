@@ -26,25 +26,30 @@ const Footer = () => {
           <div className="flex flex-col space-y-5 pl-5 ">
             <div className="flex flex-row space-x-3">
               <img className=" w-6 h-6" src={instagram_footer} alt="insta" />
-              <p
+
+              <Link
                 className="font-light text-white text-base"
                 style={{ fontFamily: "MabryPro-Light" }}
+                to="https://www.instagram.com/najaftraders.pk/"
               >
-                #najaftraders.pk
-              </p>
+                /najaftraders.pk
+              </Link>
             </div>
+
             <div className="flex flex-row space-x-3">
               <img
                 className=" w-6 h-6 text-white"
                 src={facebook_footer}
                 alt="fb"
               />
-              <p
+
+              <Link
                 className="font-light text-white text-base"
                 style={{ fontFamily: "MabryPro-Light" }}
+                to="https://www.facebook.com/maliammar1214/"
               >
                 /maliammar1214
-              </p>
+              </Link>
             </div>
             <div className="flex flex-row space-x-3">
               <img
@@ -52,12 +57,14 @@ const Footer = () => {
                 src={mail_footer}
                 alt="mail"
               />
-              <p
-                className=" font-light text-white text-base"
+
+              <Link
+                className="font-light text-white text-base"
                 style={{ fontFamily: "MabryPro-Light" }}
+                to="https://mailto:mr.ali.ammar@gmail.com"
               >
                 /mr.ali.ammar@gmail.com
-              </p>
+              </Link>
             </div>
           </div>
         </div>

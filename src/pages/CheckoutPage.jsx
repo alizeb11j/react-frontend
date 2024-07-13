@@ -28,7 +28,7 @@ const CheckoutPage = () => {
   };
 
   const validatePhone = (phone) => {
-    const re = /^\+?[1-9]\d{1,14}$/;
+    const re = /^\+?[0-9]\d{1,14}$/;
     return re.test(phone);
   };
   const handleChange = (e) => {
@@ -95,6 +95,7 @@ const CheckoutPage = () => {
                   onChange={handleChange}
                   className="w-full bg-gray-100 text-black rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7bf5f3]"
                   style={{ fontFamily: "MabryPro-Light" }}
+                  placeholder="John Doe"
                   required
                 />
               </div>
@@ -109,6 +110,7 @@ const CheckoutPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full bg-gray-100 text-black rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7bf5f3]"
+                  placeholder="johndoe@gmail.com"
                   style={{ fontFamily: "MabryPro-Light" }}
                   required
                 />
@@ -127,6 +129,7 @@ const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full bg-gray-100 text-black rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7bf5f3]"
+                  placeholder="+923001234567"
                   style={{ fontFamily: "MabryPro-Light" }}
                   required
                 />

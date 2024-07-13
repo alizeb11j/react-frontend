@@ -18,7 +18,7 @@ const ContactForm = () => {
   };
 
   const validatePhone = (phone) => {
-    const re = /^\+?[1-9]\d{1,14}$/;
+    const re = /^\+?[0-9]\d{1,14}$/;
     return re.test(phone);
   };
   const handleChange = (e) => {

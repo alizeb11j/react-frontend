@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
-    // console.log(options);
-    const [selectedItem, setSelectedItem] = useState("12cccc");
-    const dummy="12cccc"
+  // console.log(options);
+  const [selectedItem, setSelectedItem] = useState("12cccc");
+  const dummy = "12cccc";
   // const [menu_open, setMenu_open] = useState(0);
 
   const handleChange = (e) => {
@@ -17,7 +17,9 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
         {/* <p>You have selected {selectedItem}</p> */}
 
         <select
-          className={"  rounded-3xl focus:box-shadow-none focus:border-0 focus:shadow-none focus:outline-none "}
+          className={
+            "  rounded-3xl focus:box-shadow-none focus:border-0 focus:shadow-none focus:outline-none [-webkit-appearance:none]"
+          }
           name="item-selected"
           value={selectedItem}
           onChange={handleChange}
@@ -25,12 +27,14 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
         >
           {options.map((option_val) => (
             <option
-              style={{ backgroundColor: `#${option_val}`,fontFamily: "MabryPro-Medium" }}
+              style={{
+                backgroundColor: `#${option_val}`,
+                fontFamily: "MabryPro-Medium",
+              }}
               className="rounded-3xl"
-            
               value={option_val}
             >
-             {option_val} 
+              {option_val}
             </option>
           ))}
         </select>

@@ -10,7 +10,7 @@ const CartPage = () => {
         <h1 className="text-3xl text-center text-white font-bold py-5 mx-auto" style={{ fontFamily: "MabryPro-Light" }}>
           My Cart
         </h1>
-        <div className="flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col justify-center items-center lg:flex-row">
           <div className="w-1/3 space-y-4 mx-5 py-5 ">
             <CartCard
               prodName="Polka Cone"

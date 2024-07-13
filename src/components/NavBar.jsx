@@ -11,12 +11,12 @@ const NavBar = () => {
     <>
       {/* <!-- Navbar --> */}
       <div className="bg-zinc-950">
-        <nav className="relative container  mx-auto px-10 ">
+        <nav className="relative container  mx-auto px-2 ">
           {/* Flex-box */}
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="pt-2">
-              <img className="pl-2 min-w-40 h-40" src={logo_gp} alt="Logo" />
+              <img className="pl-0 md:pl-2 min-w-40 h-40" src={logo_gp} alt="Logo" />
             </div>
             {/* <Menu> */}
             <div className="flex space-x-6 text-white">
@@ -33,9 +33,9 @@ const NavBar = () => {
                 Contact Us
               </Link>
             </div>
-            <div className="flex md:shrink-0  space-x-8">
+            <div className="flex md:shrink-0  gap-4 mx-0 pl-0 pr-8" style={{  left: "-8px"}}>
               <a href="#">
-                <img className="h-8" src={search_icon} alt="Search Icon" />
+                <img className="h-8  " src={search_icon} alt="Search Icon" />
               </a>
               <a href="/cart">
                 <img className="h-8" src={cart_icon} alt="Cart Icon" />

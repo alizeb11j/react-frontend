@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+
 const Card = ({ img_name, description, price, bg = "bg-zinc-950" }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className={`${bg} px-4 rounded-lg shadow-md `}>
@@ -10,6 +12,9 @@ const Card = ({ img_name, description, price, bg = "bg-zinc-950" }) => {
             src={img_name}
             alt="Description"
             className="w-60 h-72 object-cover rounded-lg"
+            onClick={() => {
+              navigate("/prod/1");
+            }}
           />
           {/* Go to Single Product Page */}
           <Link

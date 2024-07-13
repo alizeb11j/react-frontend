@@ -24,7 +24,7 @@ const SingleProduct = () => {
       >
         <div className="flex flex-col justify-center align-center  md:flex-row">
           {/* (Left side) Carousal of Product Img */}
-          <div className=" max-w-96 p-5 justify-center align-center mx-auto md:w-1/3">
+          <div className=" max-w-96 p-5 justify-center align-center mx-auto ">
             <Carousel
               emulateTouch={true}
               infiniteLoop={true}
@@ -51,7 +51,9 @@ const SingleProduct = () => {
           </div>
           {/* (Right side) Product Description */}
 
-          <div className="max-w-full mx-auto ">
+          <div className=" mx-auto "
+            style={{width: "80%", maxWidth: "40rem" }}
+          >
             <ProdSpecsCard
               prodName={singleProduct.products[id - 1].prodName}
               prodDescription={singleProduct.products[id - 1].prodDescription}
