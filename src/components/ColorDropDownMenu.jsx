@@ -22,7 +22,7 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
   return (
     <>
       <div className="dropDownMenu ">
-        {/* <p>You have selected {selectedItem}</p> */}
+        
 
         <select
           className={
@@ -39,8 +39,8 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
                 background: `#${option_val}`,
                 fontFamily: "MabryPro-Medium",
                 backgroundColor: `#${option_val}`,
-                color: `#${option_val}`,
-                textDecorationColor: "#000000"
+                // color: `#${option_val}`,
+                // textDecorationColor: "#000000"
               }}
               
               className="rounded-3xl"
