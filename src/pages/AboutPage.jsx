@@ -1,6 +1,7 @@
 import React from "react";
 import about_img1 from "../assets/images/about_img1.jpg";
 import about_img2 from "../assets/images/about_img2.jpg";
+import about_img3 from "../assets/images/about_img3.jpg";
 import Footer from "../components/Footer";
 
 const AboutPage = () => {
@@ -69,7 +70,7 @@ const AboutPage = () => {
 
             <img
               className="w-3/12 h-60 object-contain rounded-xl"
-              src={about_img2}
+              src={about_img3}
               alt=""
             />
           </div>
