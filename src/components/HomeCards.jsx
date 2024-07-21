@@ -1,25 +1,40 @@
 import { Link } from "react-router-dom";
 import Card from "./Card";
-import prod_img1 from "../assets/images/prod_img1.png";
+
+const HomeCards = ({ items, length, itemPack }) => {
+  const cards =
+    items && length > 0
+      ? items
+      : Array.from({ length: length }, (_, i) => ({ id: i + 1 }));
 
 
-const HomeCards = ({ length }) => {
-  const cards = [];
-  for (let i = 1; i <= length; i += 1) {
-    cards.push(i);
+  function get_price(id) { 
+    
+      // Check if itemPack[id].price is not empty
+      if (itemPack[id] && itemPack[id].price !== "") {
+        // console.log("get_price", itemPack[id].price);
+        return itemPack[id].price
+      }
+
   }
+  // {
+  //   items.map((item,id) => (
+  //   console.log(item.item_id[id])
+  // ))}
 
   return (
     <section
       id="Products"
       className=" px-10 pb-10 flex flex-wrap justify-center align-center bg-zinc-950 gap-x-5 gap-y-5"
     >
-      {cards.map((card, id) => (
+      {items.map((item, id) => (
+        // console.log(item.description)
         <Card
-          key={card}
-          img_name={prod_img1}
-          description="Egyption Raw Material, Fast colors, count 10/2"
-          price="Rs.500"
+          key={item}
+          img_name={item.img_url}
+          description={item.item_id[0].description.substring(0, 55)}
+          price={`Rs. ${get_price(id)}`}
+          itemId={item.item_id[0].id}
         ></Card>
       ))}
     </section>

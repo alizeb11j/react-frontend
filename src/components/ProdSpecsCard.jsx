@@ -7,19 +7,15 @@ import { Link } from "react-router-dom";
 const ProdSpecsCard = ({
   prodName = "Polka Cone",
   prodDescription = "Egyption Raw Material, Fast colors, count 10/2",
-  prodPackaging = [12, 13, 14],
+  prodPackaging = 12,
   prodPrice = 1000,
   userColorCode = ["12cccc", "767ac1", "e660ab"],
+  userColorId = [1, 2, 3],
   bg = "bg-zinc-950",
-
 }) => {
-  const [pkgFromChild, setPkgFromChild] = useState(12);
-  // const [selectedColor, setSelectedColor] = useState(userColorCode[0]);
+  // console.log(userColorId)
+
   const [qtyFromChild, setqtyFromChild] = useState(1);
-  const handlePkgFromChild = (pkg) => {
-    setPkgFromChild(pkg);
-    // console.log(data);
-  };
 
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
@@ -28,7 +24,9 @@ const ProdSpecsCard = ({
 
   return (
     <>
-      <div className={`${bg} px-4 rounded-lg shadow-md space-y-14 container flex flex-col  `}>
+      <div
+        className={`${bg} px-4 rounded-lg shadow-md space-y-14 container flex flex-col  `}
+      >
         <h1
           className=" text-white text-2xl text-center md:text-left"
           style={{ fontFamily: "MabryPro-Bold" }}
@@ -53,13 +51,10 @@ const ProdSpecsCard = ({
             </p>
 
             <p
-              className=" text-black text-lg border border-solid border-l-zinc-400 rounded-3xl"
+              className=" text-white text-lg "
               style={{ fontFamily: "MabryPro-Medium" }}
             >
-              <DropDownMenu
-                options={prodPackaging}
-                sendData={handlePkgFromChild}
-              />
+              {prodPackaging}
             </p>
           </div>
           {/* User Color */}
@@ -75,7 +70,10 @@ const ProdSpecsCard = ({
               className=" text-black text-base border border-solid border-l-zinc-400 rounded-3xl"
               style={{ fontFamily: "MabryPro-Bold" }}
             >
-              <ColorDropDownMenu options={userColorCode} />
+              <ColorDropDownMenu
+                options={userColorCode}
+                userColorid={userColorId}
+              />
             </p>
           </div>
           {/* Price */}
@@ -120,16 +118,16 @@ const ProdSpecsCard = ({
               className=" text-white text-base text-left"
               style={{ fontFamily: "MabryPro-Bold" }}
             >
-              {`Rs. ${pkgFromChild * qtyFromChild * prodPrice}`}
+              {`Rs. ${qtyFromChild * prodPrice}`}
             </p>
           </div>
-            <Link
-              to="/cart"
-              className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
-              style={{ fontFamily: "MabryPro-Bold" }}
-            >
-              Add to Cart
-            </Link>
+          <Link
+            to="/cart"
+            className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
+            style={{ fontFamily: "MabryPro-Bold" }}
+          >
+            Add to Cart
+          </Link>
         </div>
       </div>
     </>

@@ -7,36 +7,46 @@ import {
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MainLayout from "./Layout/MainLayout";
-import JobsPage from "./pages/JobsPage";
 import TestComponent from "./pages/TestComponent";
 import ProductsPage from "./pages/ProductsPage";
-import SingleProduct, { prodLoader } from "./pages/SingleProduct";
+import SingleProduct from "./pages/SingleProduct";
 import ContactForm from "./pages/ContactForm";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import { Analytics } from "@vercel/analytics/react"
+import { ItemsProvider } from "./ItemsContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
-  <Analytics/>
+  <Analytics />;
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route path="/test" element={<TestComponent />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage  />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/products" element={<ProductsPage />} />
+        <Route
+          path="/products"
+          element={
+            <ItemsProvider>
+              <ProductsPage />
+            </ItemsProvider>
+          }
+        />
         <Route
           path="/prod/:id"
-          element={<SingleProduct />}
-          loader={prodLoader}
+          element={
+            <ItemsProvider>
+              <SingleProduct />
+            </ItemsProvider>
+          }
+         
         />
         <Route index element={<HomePage />} />
       </Route>
     )
-    
   );
 
   return <RouterProvider router={router} />;

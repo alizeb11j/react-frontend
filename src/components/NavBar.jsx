@@ -16,20 +16,20 @@ const NavBar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="pt-2">
-              <img className="pl-0 md:pl-2 min-w-40 h-40" src={logo_gp} alt="Logo" />
+              <img className="pl-0 md:pl-2 min-w-48 h-48" src={logo_gp} alt="Logo" />
             </div>
             {/* <Menu> */}
             <div className="flex space-x-6 text-white">
-              <Link className="hidden md:flex no-underline " style={{ fontFamily: "MabryPro-Light" }} to="/">
+              <Link className="hidden md:flex no-underline text-2xl " style={{ fontFamily: "MabryPro-Bold" }} to="/">
                 Home
               </Link>
-              <Link className="hidden md:flex no-underline" style={{ fontFamily: "MabryPro-Light" }} to="/products">
+              <Link className="hidden md:flex no-underline text-2xl" style={{ fontFamily: "MabryPro-Bold" }} to="/products">
                 Products
               </Link>
-              <Link className="hidden md:flex no-underline" style={{ fontFamily: "MabryPro-Light" }} to="/about">
+              <Link className="hidden md:flex no-underline text-2xl " style={{ fontFamily: "MabryPro-Bold" }} to="/about">
                 About
               </Link>
-              <Link className="hidden md:flex no-underline" style={{ fontFamily: "MabryPro-Light" }} to="/contact">
+              <Link className="hidden md:flex no-underline text-2xl" style={{ fontFamily: "MabryPro-Bold" }} to="/contact">
                 Contact Us
               </Link>
             </div>

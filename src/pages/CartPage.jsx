@@ -36,7 +36,7 @@ const CartPage = () => {
           <div className=" text-white  flex flex-col bg-zinc-800 rounded-lg p-3 md:p-5 md:w-1/3 md:gap-5">
             
             <div className="flex flex-row justify-between gap-3" >
-              <p className="text-xl  font-bold" style={{ fontFamily: "MabryPro-Light" }}>
+              <p className="text-xl  font-light" style={{ fontFamily: "MabryPro-Light" }}>
               Polka Cone
               </p>
               <p className="text-xl font-light" style={{ fontFamily: "MabryPro-Light" }}> 
@@ -45,7 +45,7 @@ const CartPage = () => {
             </div>
             
             <div className="flex flex-row justify-between gap-3"  >
-              <p className="text-xl font-bold" style={{ fontFamily: "MabryPro-Light" }}>
+              <p className="text-xl font-light" style={{ fontFamily: "MabryPro-Light" }}>
               Butterfly Adda Nalki
               </p>
               <p className="text-xl font-light" style={{ fontFamily: "MabryPro-Light" }}> 
@@ -56,7 +56,7 @@ const CartPage = () => {
               <p className="text-xl font-bold" style={{ fontFamily: "MabryPro-Light" }}>
               Total
               </p>
-              <p className="text-xl font-light" style={{ fontFamily: "MabryPro-Light" }}> 
+              <p className="text-xl " style={{ fontFamily: "MabryPro-Bold" }}> 
                 { `Rs. ${(350*13*1)+(500*13*1)}`}
               </p>
             </div>

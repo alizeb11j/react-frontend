@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
+const DropDownMenu = ({ options,userColorid, bg = "bg-[#838285]" }) => {
   // console.log(options);
-  const [selectedItem, setSelectedItem] = useState("12cccc");
-  const dummy = "12cccc";
-  // const [menu_open, setMenu_open] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(options[0]);
+  const [selectedItemId, setSelectedItemId] = useState(0);
 
+
+  
+ 
   const handleChange = (e) => {
     setSelectedItem(e.target.value);
+    const selectedColorid_index = options.indexOf(selectedItem);
+    setSelectedItemId(selectedColorid_index);
+    // console.log("Index", selectedColorid_index)
+    // console.log(userColorid[selectedColorid_index])
     // console.log(menu_open);
   };
-  var nua = navigator.userAgent;
-  var is_android =
-    nua.indexOf("Mozilla/5.0") > -1 &&
-    nua.indexOf("Android ") > -1 &&
-    nua.indexOf("AppleWebKit") > -1 &&
-    !(nua.indexOf("Chrome") > -1);
-  if (is_android) {
-    $("select.form-control").removeClass("form-control").css("width", "100%");
-  }
+
   return (
     <>
       <div className="dropDownMenu ">
@@ -39,14 +37,13 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]" }) => {
                 background: `#${option_val}`,
                 fontFamily: "MabryPro-Medium",
                 backgroundColor: `#${option_val}`,
-                // color: `#${option_val}`,
-                // textDecorationColor: "#000000"
+
               }}
               
               className="rounded-3xl"
               value={option_val}
             >
-                {option_val}
+                {userColorid[options.indexOf(option_val)]}
             </option>
           ))}
         </select>

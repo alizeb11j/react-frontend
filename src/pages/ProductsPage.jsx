@@ -1,8 +1,8 @@
-
 import Footer from "../components/Footer";
 import prod_img1 from "../assets/images/prod_img1.png";
 import prod_img2 from "../assets/images/prod_img2.png";
-import HomeCards from "../components/HomeCards"
+import HomeCards from "../components/HomeCards";
+import { useItems } from "../ItemsContext";
 
 import {
   Tabs,
@@ -10,9 +10,13 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  ListItemSuffix,
 } from "@material-tailwind/react";
 
 const ProductsPage = () => {
+  const { items, itemPack, loading, error } = useItems();
+  // console.log("IP:",itemPack);
+  // console.log(images);
   const data = [
     {
       label: "Embroidery Thread",
@@ -65,18 +69,13 @@ const ProductsPage = () => {
       id: 10,
     },
   ];
-  const img_list = [prod_img1, prod_img2];
-  // const [data, setData] = useState([]);
+  // const testitems = items.filter((item) => item.item_id.category =="Embroidery Thread");
+  // console.log(testitems)
 
-  // const getData = async () => {
-  //   const data = await fetch("http://127.0.0.1:8000/api/images_items/");
-  //   const result = await data.json();
-  //   setData(result);
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-  // console.log(data);
+  // let testlist = [...new Set(items.map(item=>item.item_id[0].id))];
+  // console.log(testlist);
+  const img_list = [prod_img1, prod_img2];
+
   return (
     <>
       <section
@@ -85,7 +84,7 @@ const ProductsPage = () => {
       >
         {/* Heading */}
         <h1
-          className="pb-10 font-light"
+          className="pb-10 font-light text-3xl"
           style={{ fontFamily: "MabryPro-Medium" }}
         >
           Stitch Your Dreams
@@ -101,11 +100,7 @@ const ProductsPage = () => {
             />
           ))}
         </div>
-        {/* <button className="gap-3 p-3 rounded-2xl border border-white border-solid bg-[#FFFFFF66]">
-          <div className="relative font-medium text-lg text-white [font-family:'Mabry_Pro-Medium', Helvatica]">
-            Embroidery Thread
-          </div>
-        </button> */}
+
         <Tabs
           value="emb_thread"
           className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -127,13 +122,21 @@ const ProductsPage = () => {
             ))}
           </TabsHeader>
           <TabsBody>
-            {data.map(({ value, desc, id }) => (
+            {data.map(({ label, value }) => (
               <TabPanel
                 key={value}
                 value={value}
                 style={{ fontFamily: "MabryPro-Medium" }}
               >
-                <HomeCards length={id} />
+                <HomeCards
+                  items={items.filter(
+                    (item) => item.item_id[0].category === label
+                  )}
+                  length={items.length}
+                  itemPack={itemPack.filter(
+                    (item) => item.item_id[0].category === label
+                  )}
+                />
               </TabPanel>
             ))}
           </TabsBody>
