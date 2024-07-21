@@ -69,11 +69,7 @@ const ProductsPage = () => {
       id: 10,
     },
   ];
-  // const testitems = items.filter((item) => item.item_id.category =="Embroidery Thread");
-  // console.log(testitems)
 
-  // let testlist = [...new Set(items.map(item=>item.item_id[0].id))];
-  // console.log(testlist);
   const img_list = [prod_img1, prod_img2];
 
   return (
@@ -128,14 +124,13 @@ const ProductsPage = () => {
                 value={value}
                 style={{ fontFamily: "MabryPro-Medium" }}
               >
+               
                 <HomeCards
                   items={items.filter(
-                    (item) => item.item_id[0].category === label
+                    (item) => item.category === label
                   )}
-                  length={items.length}
-                  itemPack={itemPack.filter(
-                    (item) => item.item_id[0].category === label
-                  )}
+                  
+                  itemPack={itemPack}
                 />
               </TabPanel>
             ))}

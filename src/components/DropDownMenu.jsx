@@ -23,7 +23,7 @@ const DropDownMenu = ({ options, bg = "bg-[#838285]", sendData }) => {
           value={selectedItem}
           onChange={handleChange}
         >
-          {options.map((option_val) => (
+          {options.map((option_val,id) => (
             <option
               className={`${bg}  text-black hover:bg-[#000000] `}
               style={{ fontFamily: "MabryPro-Light" }}

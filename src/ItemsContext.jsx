@@ -7,7 +7,7 @@ export const useItems = () => useContext(ItemsContext);
 export const ItemsProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [itemPack, setItemPack] = useState([]);
-  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [selectedProductId, setSelectedProductId] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   // console.log(selectedProductId);
@@ -15,7 +15,7 @@ export const ItemsProvider = ({ children }) => {
     try {
       const data = await fetch("http://127.0.0.1:8000/api/itempack/");
       const result = await data.json();
-      // console.log(result);
+      console.log(result);
       setItemPack(result);
 
     } catch (err) {
@@ -25,7 +25,7 @@ export const ItemsProvider = ({ children }) => {
   };
   const fetchItems = async () => {
     try {
-      const data = await fetch("http://127.0.0.1:8000/api/images_items/");
+      const data = await fetch("http://127.0.0.1:8000/api/items/");
       const result = await data.json();
       // console.log(result);
       setItems(result);
@@ -35,6 +35,7 @@ export const ItemsProvider = ({ children }) => {
 
     }
   };
+
   useEffect(() => {
    
     fetchItems();

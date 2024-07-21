@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import logo_gp from "../assets/images/logo-group.png";
 import search_icon from "../assets/images/Search.png";
 import cart_icon from "../assets/images/shopping-cart.png";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <>
       {/* <!-- Navbar --> */}
@@ -16,7 +16,7 @@ const NavBar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="pt-2">
-              <img className="pl-0 md:pl-2 min-w-48 h-48" src={logo_gp} alt="Logo" />
+              <img className="pl-0 md:pl-2 min-w-48 h-48" src={logo_gp} alt="Logo" onClick={() => { navigate("/")}}/>
             </div>
             {/* <Menu> */}
             <div className="flex space-x-6 text-white">

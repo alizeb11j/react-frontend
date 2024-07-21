@@ -42,7 +42,7 @@ const ProdSpecsCard = ({
 
         <div className=" flex flex-col w-fit gap-y-10 pl-1">
           {/* Packaging  */}
-          <div className="flex  items-center justify-center w-64 gap-x-28 flex-row">
+          <div className="flex items-center justify-center w-64 gap-x-28 flex-row">
             <p
               className=" text-white text-base text-left"
               style={{ fontFamily: "MabryPro-Light" }}
@@ -51,7 +51,7 @@ const ProdSpecsCard = ({
             </p>
 
             <p
-              className=" text-white text-lg "
+              className=" text-white text-lg w-20"
               style={{ fontFamily: "MabryPro-Medium" }}
             >
               {prodPackaging}
@@ -123,7 +123,7 @@ const ProdSpecsCard = ({
           </div>
           <Link
             to="/cart"
-            className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
+            className="bg-[#7bf5f380] text-white px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
             style={{ fontFamily: "MabryPro-Bold" }}
           >
             Add to Cart

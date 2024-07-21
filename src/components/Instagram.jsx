@@ -31,7 +31,7 @@ const Instagram = () => {
       </div>
       {/* Add Scroll bar of images overflow-x-auto  is the key*/}
       <div className="flex px-3 overflow-x-auto space-x-3 snap-x object-cover scroll-px-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        {img_list.map((img) => (
+        {img_list.map((img,id) => (
           <img
             key={img.id}
             className="h-72 w-2/5 snap-center "
