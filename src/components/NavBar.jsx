@@ -51,9 +51,9 @@ const NavBar = () => {
                   setOpen((prev) => !prev);
                 }}
               >
-                <span class="hamburger-top"></span>
-                <span class="hamburger-middle"></span>
-                <span class="hamburger-bottom"></span>
+                <span className="hamburger-top" ></span>
+                <span className="hamburger-middle"></span>
+                <span className="hamburger-bottom"></span>
               </button>
             </div>
           </div>

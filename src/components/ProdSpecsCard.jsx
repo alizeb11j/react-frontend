@@ -3,7 +3,7 @@ import DropDownMenu from "./DropDownMenu";
 import ColorDropDownMenu from "./ColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
 import { Link } from "react-router-dom";
-
+import { useItems } from "../ItemsContext";
 const ProdSpecsCard = ({
   prodName = "Polka Cone",
   prodDescription = "Egyption Raw Material, Fast colors, count 10/2",

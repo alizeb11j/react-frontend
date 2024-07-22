@@ -14,7 +14,7 @@ import {
 } from "@material-tailwind/react";
 
 const ProductsPage = () => {
-  const { items, itemPack, loading, error } = useItems();
+  const { items, loading, error } = useItems();
   // console.log("IP:",itemPack);
   // console.log(images);
   const data = [
@@ -130,7 +130,7 @@ const ProductsPage = () => {
                     (item) => item.category === label
                   )}
                   
-                  itemPack={itemPack}
+
                 />
               </TabPanel>
             ))}

@@ -8,15 +8,22 @@ import "react-responsive-carousel/lib/styles/carousel.css"; // requires a loader
 import { useItems } from "../ItemsContext";
 const SingleProduct = () => {
   const [item, setItem] = useState(null);
-  const [itemPack, setItemPack] = useState(null);
+  // For Back Button
   const location = useLocation();
+  // For Getting Id of Page From URL
   const params = useParams();
-
-  const { selectedProductId, loading, error } = useItems();
+  const { items, selectedProductId, loading, error } = useItems();
+  // For Similar Items Section
+  const Filtered_items = items.filter(
+    (it) =>
+      it?.category === item?.category &&
+      it?.id !== item?.id &&
+      it?.category &&
+      item?.category
+  );
 
   useEffect(() => {
     getItemById(params.id);
-    getItemPackById(params.id);
   }, [selectedProductId, location]);
   const getItemById = async (id) => {
     try {
@@ -27,20 +34,6 @@ const SingleProduct = () => {
       const result = await data.json();
 
       setItem(result[0]);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getItemPackById = async (id) => {
-    try {
-      const data = await fetch(
-        `http://127.0.0.1:8000` +
-          `/api/itempack/?item_id=${id ?? selectedProductId}`
-      );
-      const result = await data.json();
-      console.log(result);
-      setItemPack(result[0]);
     } catch (err) {
       console.log(err);
     }
@@ -67,14 +60,13 @@ const SingleProduct = () => {
     return Color_id_list;
   }
 
-
   return (
     <>
       <section
         id="single_prod"
         className="pt-5 space-y-10 text-white text-3xl text-center bg-zinc-950"
       >
-        {item && itemPack ? (
+        {item ? (
           <div className="flex flex-col justify-center align-center  md:flex-row">
             {/* (Left side) Carousal of Product Img */}
             <div className=" max-w-96 p-5 justify-center align-center mx-auto rounded-2xl">
@@ -88,7 +80,7 @@ const SingleProduct = () => {
                 showArrows={false}
                 showStatus={false}
               >
-                {item.images_item.map((img,id) => (
+                {item.images_item.map((img, id) => (
                   <div className="rounded-2xl">
                     <img
                       className=" min-w-20"
@@ -109,8 +101,8 @@ const SingleProduct = () => {
               <ProdSpecsCard
                 prodName={item.name}
                 prodDescription={item.description}
-                prodPackaging={itemPack.packaging_id[0]?.type || []}
-                prodPrice={itemPack.price || 0}
+                prodPackaging={item.item_pack_price[0]?.type || []}
+                prodPrice={item.item_pack_price[0].price || 0}
                 userColorCode={get_color_code(item)}
                 userColorId={get_color_id(item)}
               />
@@ -119,15 +111,20 @@ const SingleProduct = () => {
         ) : (
           <div>Loader</div>
         )}
-        <div className="bg-zinc-950  space-y-10 ">
-          <p
-            className="  text-white text-2xl text-center mx-auto px-5 "
-            style={{ fontFamily: "MabryPro-Bold" }}
-          >
-            You May Also Like
-          </p>
-          {/* <HomeCards length={3} /> */}
-        </div>
+
+        {Filtered_items ? (
+          <div className="bg-zinc-950  space-y-10 ">
+            <p
+              className="  text-white text-2xl text-center mx-auto px-5 "
+              style={{ fontFamily: "MabryPro-Bold" }}
+            >
+              {Filtered_items.length > 0 ? "You May Also Like" : ""}
+            </p>
+            <HomeCards items={Filtered_items} />
+          </div>
+        ) : (
+          <div className="bg-zinc-950  space-y-10"></div>
+        )}
       </section>
       <Footer />
     </>
