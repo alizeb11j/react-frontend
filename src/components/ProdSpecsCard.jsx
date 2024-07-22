@@ -4,6 +4,7 @@ import ColorDropDownMenu from "./ColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
 import { Link } from "react-router-dom";
 import { useItems } from "../ItemsContext";
+
 const ProdSpecsCard = ({
   prodName = "Polka Cone",
   prodDescription = "Egyption Raw Material, Fast colors, count 10/2",
@@ -13,9 +14,10 @@ const ProdSpecsCard = ({
   userColorId = [1, 2, 3],
   bg = "bg-zinc-950",
 }) => {
+  const { qtyFromChild,setqtyFromChild} = useItems();
   // console.log(userColorId)
 
-  const [qtyFromChild, setqtyFromChild] = useState(1);
+  // const [qtyFromChild, setqtyFromChild] = useState(1);
 
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
