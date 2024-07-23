@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import DropDownMenu from "./DropDownMenu";
+import { useLocation, useParams } from "react-router-dom";
 import ColorDropDownMenu from "./ColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
 import { Link } from "react-router-dom";
 import { useItems } from "../ItemsContext";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer,toast } from "react-toastify";
 
 const ProdSpecsCard = ({
   prodName = "Polka Cone",
@@ -14,16 +16,71 @@ const ProdSpecsCard = ({
   userColorId = [1, 2, 3],
   bg = "bg-zinc-950",
 }) => {
-  const { qtyFromChild,setqtyFromChild} = useItems();
-  // console.log(userColorId)
+  const {
+    selectedProductId,
+    qtyFromChild,
+    setqtyFromChild,
+    selectedColor,
+    selectedColorId,
+  } = useItems();
+  const params = useParams();
 
-  // const [qtyFromChild, setqtyFromChild] = useState(1);
+  // console.log(
+  //   "Itemid:",
+  //   params.id,
+  //   " selectedProductId:",
+  //   selectedProductId,
+  //   " qtyFromChild:",
+  //   qtyFromChild,
+  //   " selectedColor:",
+  //   selectedColor,
+  //   " selectedColorId:",
+  //   selectedColorId
+  // );
 
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
     // console.log(data);
   };
+  const makeOrder = async () => {
+    const orderData = {
+      item_id: parseInt(selectedProductId),
+      color_code_id: parseInt(selectedColorId),
+      color_code: parseInt(selectedColor),
+      qty: parseInt(qtyFromChild),
+    };
+    // console.log('Sending order data:', JSON.stringify(orderData));
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/orderitem/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Item Added to Cart placed successfully:", result);
+      toast.success("Item Added to Cart", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+        theme: "dark",
+        
+        });
+      // Handle success (e.g., show a success message, clear form, etc.)
+    } catch (error) {
+      console.error("Error placing order:", error);
+      // Handle error (e.g., show error message to user)
+    }
+  };
   return (
     <>
       <div
@@ -123,13 +180,16 @@ const ProdSpecsCard = ({
               {`Rs. ${qtyFromChild * prodPrice}`}
             </p>
           </div>
-          <Link
-            to="/cart"
+
+          <button
+            // to="/cart"
+            onClick={makeOrder}
             className="bg-[#7bf5f380] text-white px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
             style={{ fontFamily: "MabryPro-Bold" }}
           >
+            <ToastContainer />
             Add to Cart
-          </Link>
+          </button>
         </div>
       </div>
     </>

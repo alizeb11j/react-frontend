@@ -20,16 +20,16 @@ const NavBar = () => {
             </div>
             {/* <Menu> */}
             <div className="flex space-x-6 text-white">
-              <Link className="hidden md:flex no-underline text-2xl " style={{ fontFamily: "MabryPro-Bold" }} to="/">
+              <Link className="hidden md:flex no-underline text-xl " style={{ fontFamily: "MabryPro-Bold" }} to="/">
                 Home
               </Link>
-              <Link className="hidden md:flex no-underline text-2xl" style={{ fontFamily: "MabryPro-Bold" }} to="/products">
+              <Link className="hidden md:flex no-underline text-xl" style={{ fontFamily: "MabryPro-Bold" }} to="/products">
                 Products
               </Link>
-              <Link className="hidden md:flex no-underline text-2xl " style={{ fontFamily: "MabryPro-Bold" }} to="/about">
+              <Link className="hidden md:flex no-underline text-xl " style={{ fontFamily: "MabryPro-Bold" }} to="/about">
                 About
               </Link>
-              <Link className="hidden md:flex no-underline text-2xl" style={{ fontFamily: "MabryPro-Bold" }} to="/contact">
+              <Link className="hidden md:flex no-underline text-xl" style={{ fontFamily: "MabryPro-Bold" }} to="/contact">
                 Contact Us
               </Link>
             </div>
