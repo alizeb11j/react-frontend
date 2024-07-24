@@ -101,7 +101,7 @@ const SingleProduct = () => {
               <ProdSpecsCard
                 prodName={item.name}
                 prodDescription={item.description}
-                prodPackaging={item.item_pack_price[0]?.type || []}
+                prodPackaging={item.item_pack_price[0].packaging_id[0]?.type || []}
                 prodPrice={item.item_pack_price[0].price || 0}
                 userColorCode={get_color_code(item)}
                 userColorId={get_color_id(item)}

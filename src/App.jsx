@@ -15,8 +15,8 @@ import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import { ItemsProvider } from "./ItemsContext";
+
 import { Analytics } from "@vercel/analytics/react";
-import OrderItem from "./components/OrderItem";
 
 const App = () => {
   <Analytics />;
@@ -43,7 +43,6 @@ const App = () => {
               <SingleProduct />
             </ItemsProvider>
           }
-         
         />
         <Route index element={<HomePage />} />
       </Route>

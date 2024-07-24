@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import React, { useState,useEffect } from "react";
+import { useLocation, useParams,useNavigate } from "react-router-dom";
 import ColorDropDownMenu from "./ColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ const ProdSpecsCard = ({
   userColorId = [1, 2, 3],
   bg = "bg-zinc-950",
 }) => {
+  const navigate = useNavigate();
   const {
     selectedProductId,
     qtyFromChild,
@@ -42,11 +43,11 @@ const ProdSpecsCard = ({
     setqtyFromChild(qty);
     // console.log(data);
   };
-  const makeOrder = async () => {
+  const addToCart = async () => {
     const orderData = {
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
-      color_code: parseInt(selectedColor),
+      color_code: (selectedColor),
       qty: parseInt(qtyFromChild),
     };
     // console.log('Sending order data:', JSON.stringify(orderData));
@@ -73,8 +74,9 @@ const ProdSpecsCard = ({
         pauseOnHover: true,
         progress: undefined,
         theme: "dark",
-        
-        });
+        onClose:()=>{navigate("/cart")}
+      });
+      
       // Handle success (e.g., show a success message, clear form, etc.)
     } catch (error) {
       console.error("Error placing order:", error);
@@ -183,7 +185,7 @@ const ProdSpecsCard = ({
 
           <button
             // to="/cart"
-            onClick={makeOrder}
+            onClick={addToCart}
             className="bg-[#7bf5f380] text-white px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
             style={{ fontFamily: "MabryPro-Bold" }}
           >

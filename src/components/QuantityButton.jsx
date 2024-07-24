@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 
 const QuantityButton = ({ default_value,sendData }) => {
-  let [count, setCount] = useState(1);
+  let [count, setCount] = useState(default_value);
   
   function incrementCount() {
     if (count >= 999) {
