@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLoaderData, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import CartCard from "../components/CartCard";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [itemPrices, setItemPrices] = useState({});
+
   const fetchCartItems = async () => {
     try {
       const data = await fetch("http://127.0.0.1:8000/api/orderitem/");
@@ -22,15 +23,16 @@ const CartPage = () => {
     fetchCartItems();
   }, []);
 
-  const getDataFromChild = (name, price) => {
+  const getDataFromChild = (name, price, id) => {
     setItemPrices((prevPrices) => ({
       ...prevPrices,
-      [name]: price,
+      [id]: { name, price, id },
     }));
   };
-
+  // console.log(itemPrices);
   const getTotalBill = () => {
-    return Object.values(itemPrices).reduce((total, price) => total + price, 0);
+    
+    return Object.values(itemPrices).reduce((total, item) => total + item.price, 0);
   };
 
   const handleItemDeleted = () => {
@@ -58,25 +60,29 @@ const CartPage = () => {
                 prodQty={item.qty}
                 sendData={getDataFromChild}
                 onItemDeleted={handleItemDeleted}
+                orderId={item.id}
                 bg="bg-zinc-900"
               />
             </div>
           ))}
 
           <div className=" text-white  flex flex-col bg-zinc-800 rounded-lg p-3 md:p-5 md:w-1/3 md:gap-5">
-            {Object.entries(itemPrices).map(([name, price], index) => (
-              <div key={index} className="flex flex-row justify-between gap-3">
+            {Object.values(itemPrices).map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-row justify-between gap-3"
+              >
                 <p
                   className="text-xl font-light"
                   style={{ fontFamily: "MabryPro-Light" }}
                 >
-                  {name}
+                  {item.name}
                 </p>
                 <p
                   className="text-xl font-light"
                   style={{ fontFamily: "MabryPro-Light" }}
                 >
-                  {`Rs. ${price}`}
+                  {`Rs. ${item.price}`}
                 </p>
               </div>
             ))}

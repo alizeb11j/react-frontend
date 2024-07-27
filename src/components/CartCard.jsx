@@ -9,23 +9,12 @@ const CartCard = ({
   prodColor_id,
   prodQty,
   sendData,
-  onDelete,
   onItemDeleted,
+  orderId,
   bg = "bg-zinc-700",
 }) => {
   const [item, setItem] = useState(null);
   const [qtyFromChild, setqtyFromChild] = useState(prodQty);
-
-  useEffect(() => {
-    getItemById();
-  }, [prodId]);
-
-  useEffect(() => {
-    if (item && item.name) {
-      updatePrice();
-    }
-  }, [qtyFromChild, item]);
-
   const getItemById = async () => {
     try {
       const data = await fetch(
@@ -41,16 +30,33 @@ const CartCard = ({
       console.log(err.message);
     }
   };
+  
+  //Call Get Request whenevr prodId changes
+  useEffect(() => {
+    getItemById();
+    // console.log(item)
+  }, [prodId]);
+
+    //Updates price whenevr prodId changes or Qty changes
+  useEffect(() => {
+    if (item && item.name) {
+      updatePrice();
+    }
+  }, [qtyFromChild, item]);
+
+  // Update and Send Json Object of Name+Price to CartPage
   const updatePrice = () => {
     if (item && item.item_pack_price && item.item_pack_price[0]) {
       const totalPrice = item.item_pack_price[0].price * qtyFromChild;
-      sendData(item.name, totalPrice);
+      
+      sendData(item.name, totalPrice, orderId);
     }
   };
+// Get Qty value from Quantity Component
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
   };
- 
+//  Send Delete Request
   const handleDelete = async () => { 
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/orderitem/?item_id=${prodId}`, {

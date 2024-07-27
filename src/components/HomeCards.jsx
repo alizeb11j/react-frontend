@@ -16,7 +16,7 @@ const HomeCards = ({ items }) => {
       {items.map((item, id) => (
         // console.log(item.description)
         <Card
-          key={item}
+          key={id}
           img_name={item.images_item[0].img_url}
           description={item.description.substring(0, 55)}
           price={`Rs. ${item.item_pack_price[0].price ?? ''}`}

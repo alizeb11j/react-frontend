@@ -133,12 +133,14 @@ const ProdSpecsCard = ({
               className=" text-black text-base border border-solid border-l-zinc-400 rounded-3xl"
               style={{ fontFamily: "MabryPro-Bold" }}
             >
-              {" "}
-            </p>
-            <ColorDropDownMenu
+              
+              <ColorDropDownMenu
               options={userColorCode}
               userColorid={userColorId}
             />
+            </p>
+
+
           </div>
           {/* Price */}
           <div className="flex flex-row items-center justify-center w-fit gap-x-40 ">

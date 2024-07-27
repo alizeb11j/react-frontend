@@ -33,7 +33,7 @@ const Instagram = () => {
       <div className="flex px-3 overflow-x-auto space-x-3 snap-x object-cover scroll-px-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {img_list.map((img,id) => (
           <img
-            key={img.id}
+            key={id}
             className="h-72 w-2/5 snap-center "
             src={img}
             alt="insta_img ${img.id}"
