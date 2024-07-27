@@ -21,6 +21,7 @@ import SessionManager from "./components/SessonManager";
 
 const App = () => {
   <Analytics />;
+  <SessionManager />
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
@@ -28,7 +29,6 @@ const App = () => {
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/session" element={<SessionManager />} />
         <Route path="/about" element={<AboutPage />} />
         <Route
           path="/products"

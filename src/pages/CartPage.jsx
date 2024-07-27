@@ -2,16 +2,45 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import CartCard from "../components/CartCard";
-
+function getQty(details, index) {
+  // return details[index].qty;
+  if (details[index]) {
+    return details[index].qty;
+  }
+  // else {
+  //   return null; // or you could throw an error
+  // }
+}
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [itemPrices, setItemPrices] = useState({});
-
+  const [itemDetails, setItemDetails] = useState({});
+  const [orderDetails, setOrderDetails] = useState([]);
   
+  // console.log("itemDetails",itemDetails)
 
+
+  function checkout() { 
+    let order = [];
+    cartItems.map((CI, index) => {
+      order.push(
+        {
+          id: CI.item_id,
+          name:itemDetails[CI.item_id]?.name,
+          color_code_id: CI.color_code_id,
+          ordered_at: CI.ordered_at,
+          qty: itemDetails[CI.item_id]?.qty,
+        },
+      );
+  
+    });
+    setOrderDetails(order);
+    console.log("Order:",order,orderDetails)
+  }
+
+// console.log(orderDetails)
   const fetchCartItems = async () => {
     try {
-      const data = await fetch("http://127.0.0.1:8000/api/orderitem/");
+      const data = await fetch("http://127.0.0.1:8000/api/cartitem/");
       const result = await data.json();
       // console.log(result);
       setCartItems(result);
@@ -25,24 +54,26 @@ const CartPage = () => {
     fetchCartItems();
   }, []);
 
-  const getDataFromChild = (name, price, id) => {
-    setItemPrices((prevPrices) => ({
+  const getDataFromChild = (name, price, id, qty) => {
+    setItemDetails((prevPrices) => ({
       ...prevPrices,
-      [id]: { name, price, id },
+      [id]: { name, price, id, qty },
     }));
   };
-  // console.log(itemPrices);
+  // console.log(itemDetails);
   const getTotalBill = () => {
-    
-    return Object.values(itemPrices).reduce((total, item) => total + item.price, 0);
+    return Object.values(itemDetails).reduce(
+      (total, item) => total + item.price,
+      0
+    );
   };
 
   const handleItemDeleted = () => {
     // fetchCartItems();
-    
+
     window.location.reload();
 
-    // setItemPrices({}); // Reset prices when an item is deleted
+    // setitemDetails({}); // Reset prices when an item is deleted
   };
 
   return (
@@ -72,7 +103,7 @@ const CartPage = () => {
           ))}
 
           <div className=" text-white  flex flex-col bg-zinc-800 rounded-lg p-3 md:p-5 md:w-1/3 md:gap-5">
-            {Object.values(itemPrices).map((item) => (
+            {Object.values(itemDetails).map((item) => (
               <div
                 key={item.id}
                 className="flex flex-row justify-between gap-3"
@@ -104,7 +135,8 @@ const CartPage = () => {
               </p>
             </div>
             <Link
-              to="/checkout"
+              to="/cart"
+              onClick={checkout}
               className=" bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black justify-center items-center   "
               style={{ fontFamily: "MabryPro-Bold" }}
             >

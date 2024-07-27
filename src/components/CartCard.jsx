@@ -49,7 +49,7 @@ const CartCard = ({
     if (item && item.item_pack_price && item.item_pack_price[0]) {
       const totalPrice = item.item_pack_price[0].price * qtyFromChild;
       
-      sendData(item.name, totalPrice, orderId);
+      sendData(item.name, totalPrice, orderId,qtyFromChild);
     }
   };
 // Get Qty value from Quantity Component
@@ -59,7 +59,7 @@ const CartCard = ({
 //  Send Delete Request
   const handleDelete = async () => { 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/orderitem/?item_id=${prodId}&color_code_id=${prodColor_id}`, {
+      const response = await fetch(`http://127.0.0.1:8000/api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
