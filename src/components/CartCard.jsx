@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import QuantityButton from "./QuantityButton";
-import prod_img1 from "../assets/images/prod_img1.png";
 
+import { Trash2 } from "lucide-react";
+import axios from 'axios';
 const CartCard = ({
   prodId,
   prodColor,
   prodColor_id,
   prodQty,
   sendData,
+  onDelete,
+  onItemDeleted,
   bg = "bg-zinc-700",
 }) => {
-
   const [item, setItem] = useState(null);
   const [qtyFromChild, setqtyFromChild] = useState(prodQty);
 
-
-  
   useEffect(() => {
     getItemById();
   }, [prodId]);
@@ -29,15 +29,14 @@ const CartCard = ({
   const getItemById = async () => {
     try {
       const data = await fetch(
-        `http://127.0.0.1:8000` +
-          `/api/items/?item_id=${prodId}`
+        `http://127.0.0.1:8000` + `/api/items/?item_id=${prodId}`
       );
       const result = await data.json();
       // console.log("Result",result[0])
       setItem(result[0]);
       if (result[0] && result[0].name) {
         updatePrice();
-      } 
+      }
     } catch (err) {
       console.log(err.message);
     }
@@ -51,7 +50,28 @@ const CartCard = ({
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
   };
+ 
+  const handleDelete = async () => { 
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/orderitem/?item_id=${prodId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any authentication headers if required
+        },
+      });
 
+      if (response.ok) {
+        onItemDeleted(); 
+        console.log("Item Deleted Successfully");
+      } else {
+        console.log(`Failed to delete item. Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error deleting item:', err);
+    }
+  };
+  
   return (
     <>
       <div className="flex flex-col   gap-x-3 px-5 mx-auto py-5 md:flex-row">
@@ -63,13 +83,21 @@ const CartCard = ({
 
         <div className={`${bg} px-4 rounded-lg shadow-md `}>
           <div className="flex flex-col items-center justify-center gap-3">
-            <p
-              className="font-light text-white text-base text-center"
-              style={{ fontFamily: "MabryPro-Bold" }}
-            >
-              {item?.name}
-            </p>
-
+            <div className="flex flex-row items-center justify-center gap-3">
+              <p
+                className="font-light text-white text-base text-center"
+                style={{ fontFamily: "MabryPro-Bold" }}
+              >
+                {item?.name}
+              </p>
+              <button
+                onClick={handleDelete}
+                className={`${bg} font-bold text-white text-base text-center`} 
+                aria-label="Delete item"
+              >
+                <Trash2 size={20} color="#ffffff" strokeWidth={2} />
+              </button>
+            </div>
             <p
               className="font-light text-white text-base text-center md:text-left"
               style={{ fontFamily: "MabryPro-Light" }}

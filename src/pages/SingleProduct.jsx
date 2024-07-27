@@ -81,7 +81,8 @@ const SingleProduct = () => {
                 showStatus={false}
               >
                 {item.images_item.map((img, id) => (
-                  <div className="rounded-2xl">
+                  <div key={id}
+                    className="rounded-2xl">
                     <img
                       className=" min-w-20"
                       style={{ maxHeight: "400px", maxWidth: "400px" }}

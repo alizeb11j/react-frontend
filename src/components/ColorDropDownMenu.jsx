@@ -30,8 +30,9 @@ const ColorDropDownMenu = ({ options, userColorid, bg = "bg-[#838285]" }) => {
           onChange={handleChange}
           style={{ backgroundColor: `#${selectedColor}` }}
         >
-          {options.map((option_val) => (
+          {options.map((option_val,id) => (
             <option
+              key={id}
               style={{
                 background: `#${option_val}`,
                 fontFamily: "MabryPro-Medium",

@@ -87,9 +87,9 @@ const ProductsPage = () => {
         </h1>
         {/* Featured Images */}
         <div className="flex flex-col justify-center mx-auto px-5 pb-10 gap-5 max-w-md md:flex-row">
-          {img_list.map((img) => (
+          {img_list.map((img,id) => (
             <img
-              key={img.id}
+              key={id}
               className="h-80 space-x-5 px-5"
               src={img}
               alt="insta_img ${img.id}"

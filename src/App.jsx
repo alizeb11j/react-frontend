@@ -17,6 +17,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import { ItemsProvider } from "./ItemsContext";
 
 import { Analytics } from "@vercel/analytics/react";
+import SessionManager from "./components/SessonManager";
 
 const App = () => {
   <Analytics />;
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/session" element={<SessionManager />} />
         <Route path="/about" element={<AboutPage />} />
         <Route
           path="/products"

@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
-import { useLocation, useParams,useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import ColorDropDownMenu from "./ColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
 import { Link } from "react-router-dom";
 import { useItems } from "../ItemsContext";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProdSpecsCard = ({
   prodName = "Polka Cone",
@@ -41,13 +41,13 @@ const ProdSpecsCard = ({
 
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
-    // console.log(data);
+    // console.log(qty);
   };
   const addToCart = async () => {
     const orderData = {
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
-      color_code: (selectedColor),
+      color_code: selectedColor,
       qty: parseInt(qtyFromChild),
     };
     // console.log('Sending order data:', JSON.stringify(orderData));
@@ -74,9 +74,11 @@ const ProdSpecsCard = ({
         pauseOnHover: true,
         progress: undefined,
         theme: "dark",
-        onClose:()=>{navigate("/cart")}
+        onClose: () => {
+          navigate("/cart");
+        },
       });
-      
+
       // Handle success (e.g., show a success message, clear form, etc.)
     } catch (error) {
       console.error("Error placing order:", error);
@@ -131,11 +133,12 @@ const ProdSpecsCard = ({
               className=" text-black text-base border border-solid border-l-zinc-400 rounded-3xl"
               style={{ fontFamily: "MabryPro-Bold" }}
             >
-              <ColorDropDownMenu
-                options={userColorCode}
-                userColorid={userColorId}
-              />
+              {" "}
             </p>
+            <ColorDropDownMenu
+              options={userColorCode}
+              userColorid={userColorId}
+            />
           </div>
           {/* Price */}
           <div className="flex flex-row items-center justify-center w-fit gap-x-40 ">
@@ -164,7 +167,12 @@ const ProdSpecsCard = ({
               className=" text-white text-base text-left"
               style={{ fontFamily: "MabryPro-Light" }}
             >
-              {<QuantityButton sendData={handleQtyFromChild} />}
+              {
+                <QuantityButton
+                  default_value={1}
+                  sendData={handleQtyFromChild}
+                />
+              }
             </p>
           </div>
           {/* Total */}
