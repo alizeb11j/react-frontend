@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import HomeCards from "../components/HomeCards";
 import "react-responsive-carousel/lib/styles/carousel.css"; // requires a loader
 import { useItems } from "../ItemsContext";
+
 const SingleProduct = () => {
   const [item, setItem] = useState(null);
   // For Back Button

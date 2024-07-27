@@ -59,7 +59,7 @@ const CartCard = ({
 //  Send Delete Request
   const handleDelete = async () => { 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/orderitem/?item_id=${prodId}`, {
+      const response = await fetch(`http://127.0.0.1:8000/api/orderitem/?item_id=${prodId}&color_code_id=${prodColor_id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
