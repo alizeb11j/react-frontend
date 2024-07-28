@@ -17,7 +17,7 @@ const OrderItem = ({ itemId, colorCodeId, colorCode, quantity }) => {
     };
     // console.log('Sending order data:', JSON.stringify(orderData));
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/cartitem/", {
+      const response = await fetch("/api/cartitem/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

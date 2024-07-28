@@ -19,7 +19,7 @@ const CartCard = ({
   const getItemById = async () => {
     try {
       const data = await fetch(
-        `http://127.0.0.1:8000` + `/api/items/?item_id=${prodId}`
+        `/api/` + `items/?item_id=${prodId}`
       );
       const result = await data.json();
       // console.log("Result",result[0])
@@ -60,7 +60,7 @@ const CartCard = ({
 //  Send Delete Request
   const handleDelete = async () => { 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}`, {
+      const response = await fetch(`/api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

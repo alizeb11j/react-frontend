@@ -21,7 +21,7 @@ export const ItemsProvider = ({ children }) => {
 
   const fetchItems = async () => {
     try {
-      const data = await fetch("http://127.0.0.1:8000/api/items/");
+      const data = await fetch("/api/items/");
       const result = await data.json();
       // console.log(result);
       setItems(result);
