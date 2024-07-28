@@ -7,6 +7,7 @@ const CartCard = ({
   prodId,
   prodColor,
   prodColor_id,
+  prodOrdered_at,
   prodQty,
   sendData,
   onItemDeleted,
@@ -42,14 +43,14 @@ const CartCard = ({
     if (item && item.name) {
       updatePrice();
     }
-  }, [qtyFromChild, item]);
+  }, [qtyFromChild, item,prodId]);
 
   // Update and Send Json Object of Name+Price to CartPage
   const updatePrice = () => {
     if (item && item.item_pack_price && item.item_pack_price[0]) {
       const totalPrice = item.item_pack_price[0].price * qtyFromChild;
       
-      sendData(item.name, totalPrice, orderId,qtyFromChild);
+      sendData(item.name, totalPrice, orderId,qtyFromChild,prodId,prodColor_id,prodOrdered_at);
     }
   };
 // Get Qty value from Quantity Component

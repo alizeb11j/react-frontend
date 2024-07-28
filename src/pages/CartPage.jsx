@@ -2,42 +2,62 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import CartCard from "../components/CartCard";
-function getQty(details, index) {
-  // return details[index].qty;
-  if (details[index]) {
-    return details[index].qty;
-  }
-  // else {
-  //   return null; // or you could throw an error
-  // }
-}
+
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [itemDetails, setItemDetails] = useState({});
   const [orderDetails, setOrderDetails] = useState([]);
-  
+
   // console.log("itemDetails",itemDetails)
 
+    
+  
 
-  function checkout() { 
+
+  
+
+  const checkout=async()=> {
     let order = [];
-    cartItems.map((CI, index) => {
+    Object.values(itemDetails).map((itemDetail) => {
       order.push(
         {
-          id: CI.item_id,
-          name:itemDetails[CI.item_id]?.name,
-          color_code_id: CI.color_code_id,
-          ordered_at: CI.ordered_at,
-          qty: itemDetails[CI.item_id]?.qty,
+          id: itemDetail.itemid,
+          name:itemDetail.name,
+          color_code_id: itemDetail.color_id,
+          ordered_at: itemDetail.ordered_at,
+          qty: itemDetail.qty ,
         },
       );
   
     });
-    setOrderDetails(order);
-    console.log("Order:",order,orderDetails)
-  }
+    if (order.length > 0) { 
+      setOrderDetails(order);
+      console.log("Order:",orderDetails)
+    }
+    
+    
+    // console.log("Order:",orderDetails)
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/orderitem/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails),
+      });
+      if (response.ok) {
+        console.log('Order placed successfully');
+        // Clear cart and redirect to a confirmation page
+        // navigate('/order-confirmation');
+      } else {
+        console.error('Failed to place order');
+      }
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
+  };
 
-// console.log(orderDetails)
+  // console.log(orderDetails)
   const fetchCartItems = async () => {
     try {
       const data = await fetch("http://127.0.0.1:8000/api/cartitem/");
@@ -54,10 +74,10 @@ const CartPage = () => {
     fetchCartItems();
   }, []);
 
-  const getDataFromChild = (name, price, id, qty) => {
+  const getDataFromChild = (name, price, id, qty,itemid,color_id,ordered_at) => {
     setItemDetails((prevPrices) => ({
       ...prevPrices,
-      [id]: { name, price, id, qty },
+      [id]: { name, price, id, qty,itemid,color_id,ordered_at },
     }));
   };
   // console.log(itemDetails);
@@ -93,6 +113,7 @@ const CartPage = () => {
                 prodId={item.item_id}
                 prodColor={item.color_code}
                 prodColor_id={item.color_code_id}
+                prodOrdered_at={item.ordered_at}
                 prodQty={item.qty}
                 sendData={getDataFromChild}
                 onItemDeleted={handleItemDeleted}

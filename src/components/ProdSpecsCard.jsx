@@ -26,18 +26,7 @@ const ProdSpecsCard = ({
   } = useItems();
   const params = useParams();
 
-  // console.log(
-  //   "Itemid:",
-  //   params.id,
-  //   " selectedProductId:",
-  //   selectedProductId,
-  //   " qtyFromChild:",
-  //   qtyFromChild,
-  //   " selectedColor:",
-  //   selectedColor,
-  //   " selectedColorId:",
-  //   selectedColorId
-  // );
+
 
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
@@ -45,6 +34,7 @@ const ProdSpecsCard = ({
   };
   const addToCart = async () => {
     const orderData = {
+      
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
       color_code: selectedColor,
