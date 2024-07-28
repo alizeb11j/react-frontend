@@ -19,7 +19,7 @@ const CartCard = ({
   const getItemById = async () => {
     try {
       const data = await fetch(
-        `/api/` + `items/?item_id=${prodId}`
+        `/api/items/?item_id=${prodId}`
       );
       const result = await data.json();
       // console.log("Result",result[0])

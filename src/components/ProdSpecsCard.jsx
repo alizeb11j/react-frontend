@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ColorDropDownMenu from "./ColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
-import { Link } from "react-router-dom";
+
 import { useItems } from "../ItemsContext";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";

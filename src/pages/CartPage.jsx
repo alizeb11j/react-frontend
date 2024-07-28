@@ -8,52 +8,42 @@ const CartPage = () => {
   const [itemDetails, setItemDetails] = useState({});
   const [orderDetails, setOrderDetails] = useState([]);
 
-  // console.log("itemDetails",itemDetails)
-
-    
-  
 
 
-  
+  const checkout = async () => {
+    let order = Object.values(itemDetails).map((itemDetail) => ({
+      id: itemDetail.itemid,
+      name: itemDetail.name,
+      color_code_id: itemDetail.color_id,
+      ordered_at: itemDetail.ordered_at,
+      qty: itemDetail.qty,
+    }));
 
-  const checkout=async()=> {
-    let order = [];
-    Object.values(itemDetails).map((itemDetail) => {
-      order.push(
-        {
-          id: itemDetail.itemid,
-          name:itemDetail.name,
-          color_code_id: itemDetail.color_id,
-          ordered_at: itemDetail.ordered_at,
-          qty: itemDetail.qty ,
-        },
-      );
-  
-    });
-    if (order.length > 0) { 
+    if (order.length > 0) {
       setOrderDetails(order);
-      console.log("Order:",orderDetails)
-    }
-    
-    
-    // console.log("Order:",orderDetails)
-    try {
-      const response = await fetch('/api/orderitem/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderDetails),
-      });
-      if (response.ok) {
-        console.log('Order placed successfully');
-        // Clear cart and redirect to a confirmation page
-        // navigate('/order-confirmation');
-      } else {
-        console.error('Failed to place order');
+      console.log("Order:", order);
+
+      try {
+        const response = await fetch("/api/orderitem/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(order),
+        });
+        if (response.ok) {
+          console.log("Order placed successfully");
+          // Clear cart and redirect to a confirmation page
+          // navigate('/order-confirmation');
+        } else {
+          console.error("Failed to place order");
+        }
+      } catch (error) {
+        console.error("Error during checkout:", error);
       }
-    } catch (error) {
-      console.error('Error during checkout:', error);
+    } else {
+      console.log("Cart is empty. Cannot proceed with checkout.");
+      // You might want to show a message to the user here
     }
   };
 
@@ -74,10 +64,18 @@ const CartPage = () => {
     fetchCartItems();
   }, []);
 
-  const getDataFromChild = (name, price, id, qty,itemid,color_id,ordered_at) => {
+  const getDataFromChild = (
+    name,
+    price,
+    id,
+    qty,
+    itemid,
+    color_id,
+    ordered_at
+  ) => {
     setItemDetails((prevPrices) => ({
       ...prevPrices,
-      [id]: { name, price, id, qty,itemid,color_id,ordered_at },
+      [id]: { name, price, id, qty, itemid, color_id, ordered_at },
     }));
   };
   // console.log(itemDetails);
@@ -156,7 +154,7 @@ const CartPage = () => {
               </p>
             </div>
             <Link
-              to="/cart"
+              to="/checkout"
               onClick={checkout}
               className=" bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black justify-center items-center   "
               style={{ fontFamily: "MabryPro-Bold" }}
