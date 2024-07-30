@@ -33,14 +33,17 @@ const ProdSpecsCard = ({
     // console.log(qty);
   };
   const addToCart = async () => {
+    const userId = localStorage.getItem("userId");
+    
     const orderData = {
       
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
       color_code: selectedColor,
       qty: parseInt(qtyFromChild),
+      user_id: userId,
     };
-    // console.log('Sending order data:', JSON.stringify(orderData));
+    console.log('Sending order data:', JSON.stringify(orderData));
     try {
       const response = await fetch('/api/cartitem/', {
         method: "POST",

@@ -23,7 +23,7 @@ const SessionManager = () => {
 
       localStorage.setItem('userId', newUserId);
       localStorage.setItem('creationTime', newCreationTime);
-
+      console.log("Session Userid created")
       setUserId(newUserId);
       setCreationTime(newCreationTime);
     }
@@ -43,19 +43,22 @@ const SessionManager = () => {
   };
 
   return (
-    <div>
-      <h2>Session Information</h2>
-      {userId ? (
-        <>
-          <p>User ID: {userId}</p>
-          <p>Session Created: {new Date(creationTime).toLocaleString()}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <p>No active session</p>
-      )}
-    </div>
+    <div></div>
   );
+  // (
+    // <div>
+    //   <h2>Session Information</h2>
+    //   {userId ? (
+    //     <>
+    //       <p>User ID: {userId}</p>
+    //       <p>Session Created: {new Date(creationTime).toLocaleString()}</p>
+    //       <button onClick={handleLogout}>Logout</button>
+    //     </>
+    //   ) : (
+    //     <p>No active session</p>
+    //   )}
+    // </div>
+  // );
 };
 
 export default SessionManager;

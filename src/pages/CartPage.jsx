@@ -8,8 +8,6 @@ const CartPage = () => {
   const [itemDetails, setItemDetails] = useState({});
   const [orderDetails, setOrderDetails] = useState([]);
 
-
-
   const checkout = async () => {
     let order = Object.values(itemDetails).map((itemDetail) => ({
       id: itemDetail.itemid,
@@ -33,8 +31,7 @@ const CartPage = () => {
         });
         if (response.ok) {
           console.log("Order placed successfully");
-          // Clear cart and redirect to a confirmation page
-          // navigate('/order-confirmation');
+          await deleteCartItems();
         } else {
           console.error("Failed to place order");
         }
@@ -64,6 +61,32 @@ const CartPage = () => {
     fetchCartItems();
   }, []);
 
+  const deleteCartItems = async () => {
+    const userId = localStorage.getItem("userId");
+    const creationTime = localStorage.getItem("creationTime");
+
+    try {
+      const response = await fetch("/api/cartitem/", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId,
+          creationTime: creationTime,
+        }),
+      });
+      if (response.ok) {
+        console.log("Cart items deleted successfully");
+        setCartItems([]);
+        setItemDetails({});
+      } else {
+        console.error("Failed to delete cart items");
+      }
+    } catch (error) {
+      console.error("Error deleting cart items:", error);
+    }
+  };
   const getDataFromChild = (
     name,
     price,

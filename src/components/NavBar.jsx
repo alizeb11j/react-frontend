@@ -3,6 +3,7 @@ import { Link,useNavigate } from "react-router-dom";
 import logo_gp from "../assets/images/logo-group.png";
 import search_icon from "../assets/images/Search.png";
 import cart_icon from "../assets/images/shopping-cart.png";
+import SessionManager from "./SessionManager";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -87,6 +88,7 @@ const NavBar = () => {
           </div>
         </nav>
       </div>
+      <SessionManager />
     </>
   );
 };

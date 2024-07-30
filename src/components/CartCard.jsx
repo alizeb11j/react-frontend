@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuantityButton from "./QuantityButton";
 
 import { Trash2 } from "lucide-react";
-import axios from 'axios';
+import axios from "axios";
 const CartCard = ({
   prodId,
   prodColor,
@@ -18,9 +18,7 @@ const CartCard = ({
   const [qtyFromChild, setqtyFromChild] = useState(prodQty);
   const getItemById = async () => {
     try {
-      const data = await fetch(
-        `/api/items/?item_id=${prodId}`
-      );
+      const data = await fetch(`/api/items/?item_id=${prodId}`);
       const result = await data.json();
       // console.log("Result",result[0])
       setItem(result[0]);
@@ -31,54 +29,68 @@ const CartCard = ({
       console.log(err.message);
     }
   };
-  
+
   //Call Get Request whenevr prodId changes
   useEffect(() => {
     getItemById();
     // console.log(item)
   }, [prodId]);
 
-    //Updates price whenevr prodId changes or Qty changes
+  //Updates price whenevr prodId changes or Qty changes
   useEffect(() => {
     if (item && item.name) {
       updatePrice();
     }
-  }, [qtyFromChild, item,prodId]);
+  }, [qtyFromChild, item, prodId]);
 
   // Update and Send Json Object of Name+Price to CartPage
   const updatePrice = () => {
     if (item && item.item_pack_price && item.item_pack_price[0]) {
       const totalPrice = item.item_pack_price[0].price * qtyFromChild;
-      
-      sendData(item.name, totalPrice, orderId,qtyFromChild,prodId,prodColor_id,prodOrdered_at);
+
+      sendData(
+        item.name,
+        totalPrice,
+        orderId,
+        qtyFromChild,
+        prodId,
+        prodColor_id,
+        prodOrdered_at
+      );
     }
   };
-// Get Qty value from Quantity Component
+  // Get Qty value from Quantity Component
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
   };
-//  Send Delete Request
-  const handleDelete = async () => { 
+  //  Send Delete Request
+  const handleDelete = async () => {
+    const userId = localStorage.getItem("userId");
+    const creationTime = localStorage.getItem("creationTime");
     try {
-      const response = await fetch(`/api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          // Add any authentication headers if required
-        },
-      });
+      const response = await fetch(
+        `/api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}&userId=${userId}&creationTime=${creationTime}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            // Add any authentication headers if required
+          },
+
+        }
+      );
 
       if (response.ok) {
-        onItemDeleted(); 
+        onItemDeleted();
         console.log("Item Deleted Successfully");
       } else {
         console.log(`Failed to delete item. Status: ${response.status}`);
       }
     } catch (error) {
-      console.error('Error deleting item:', err);
+      console.error("Error deleting item:", err);
     }
   };
-  
+
   return (
     <>
       <div className="flex flex-col   gap-x-3 px-5 mx-auto py-5 md:flex-row">
@@ -99,7 +111,7 @@ const CartCard = ({
               </p>
               <button
                 onClick={handleDelete}
-                className={`${bg} font-bold text-white text-base text-center`} 
+                className={`${bg} font-bold text-white text-base text-center`}
                 aria-label="Delete item"
               >
                 <Trash2 size={20} color="#ffffff" strokeWidth={2} />
