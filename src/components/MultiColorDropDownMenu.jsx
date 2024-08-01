@@ -111,7 +111,7 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
   }, []);
 
   const handleOptionClick = (index) => {
-    console.log("Index:", index, "userColorid:", userColorid[index]);
+    // console.log("Index:", index, "userColorid:", userColorid[index]);
     setSelectedIndex(index);
     setSelectedColorId(userColorid[index]);
     setSelectedColor(multi_options[index].join(","));
@@ -135,7 +135,7 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
           onClick={() => setIsOpen(!isOpen)}
           style={getGradientStyle(multi_options[selectedIndex])}
         >
-          <span className="mr-2">Multi-color: {userColorid[selectedIndex]}</span>
+          <span className="mr-2">{userColorid[selectedIndex]}</span>
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
