@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import HomeCards from "../components/HomeCards";
 import "react-responsive-carousel/lib/styles/carousel.css"; // requires a loader
 import { useItems } from "../ItemsContext";
+import CircleLoader from "react-spinners/CircleLoader";
 
 const SingleProduct = () => {
   const [item, setItem] = useState(null);
@@ -29,8 +30,7 @@ const SingleProduct = () => {
   const getItemById = async (id) => {
     try {
       const data = await fetch(
-        
-          `/api/items/?item_id=${id ?? selectedProductId}`
+        `/api/items/?item_id=${id ?? selectedProductId}`
       );
       const result = await data.json();
 
@@ -53,7 +53,7 @@ const SingleProduct = () => {
 
   function get_color_id(item) {
     let Color_id_list = [];
-    if (!item || !item?.colors) return [];
+    // if (!item || !item?.colors) return [];
 
     item.colors.map((color) => {
       if (color.id) Color_id_list.push(color.id);
@@ -61,6 +61,48 @@ const SingleProduct = () => {
     return Color_id_list;
   }
 
+  function get_multi_color(item) {
+    // console.log(item)
+
+    const multiColorList = [];
+
+    item.colors.forEach((color) => {
+      if (
+        color.multi_color &&
+        color.multi_color.length > 0 &&
+        !color.multi_color.every((c) => c === "")
+      ) {
+        // const cleanedColors = color.multi_color.map(c => c.replace('#', ''));
+
+        multiColorList.push(color.multi_color);
+      }
+    });
+
+    // console.log("idlist:",multiColoridList)
+    // console.log(multiColorList);
+    return multiColorList;
+  }
+  function get_multi_color_id(item) {
+    // console.log(item)
+
+    const multiColoridList = [];
+
+    item.colors.forEach((color) => {
+      if (
+        color.multi_color &&
+        color.multi_color.length > 0 &&
+        !color.multi_color.every((c) => c === "")
+      ) {
+        // const cleanedColors = color.multi_color.map(c => c.replace('#', ''));
+
+        multiColoridList.push(color.id);
+      }
+    });
+
+    // console.log("idlist:",multiColoridList)
+    // console.log(multiColorList);
+    return multiColoridList;
+  }
   return (
     <>
       <section
@@ -82,8 +124,7 @@ const SingleProduct = () => {
                 showStatus={false}
               >
                 {item.images_item.map((img, id) => (
-                  <div key={id}
-                    className="rounded-2xl">
+                  <div key={id} className="rounded-2xl">
                     <img
                       className=" min-w-20"
                       style={{ maxHeight: "400px", maxWidth: "400px" }}
@@ -103,15 +144,24 @@ const SingleProduct = () => {
               <ProdSpecsCard
                 prodName={item.name}
                 prodDescription={item.description}
-                prodPackaging={item.item_pack_price[0].packaging_id[0]?.type || []}
+                prodPackaging={
+                  item.item_pack_price[0].packaging_id[0]?.type || []
+                }
                 prodPrice={item.item_pack_price[0].price || 0}
                 userColorCode={get_color_code(item)}
                 userColorId={get_color_id(item)}
+                userMultiColor={get_multi_color(item)}
+                userMultiColorId={get_multi_color_id(item)}
               />
             </div>
           </div>
         ) : (
-          <div>Loader</div>
+          <CircleLoader
+            className="flex justify-center align-center mx-auto"
+            color="#c200e9"
+            loading
+            size={100}
+          />
         )}
 
         {Filtered_items ? (

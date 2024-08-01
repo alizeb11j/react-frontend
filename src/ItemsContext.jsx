@@ -13,8 +13,9 @@ export const ItemsProvider = ({ children }) => {
   // Add Parameters for Saving in Cart
   const [qtyFromChild, setqtyFromChild] = useState(1);
   const [selectedColor, setSelectedColor] = useState("f4c5bf");
-  const [selectedColorId, setSelectedColorId] = useState(6);
+  const [selectedColorId, setSelectedColorId] = useState(0);
  
+
 
 
   // console.log("selectedColor",selectedColor,"selectedColorId",selectedColorId)

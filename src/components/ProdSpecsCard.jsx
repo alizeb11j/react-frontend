@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ColorDropDownMenu from "./ColorDropDownMenu";
+import MultiColorDropDownMenu from "./MultiColorDropDownMenu";
 import QuantityButton from "./QuantityButton";
 
 import { useItems } from "../ItemsContext";
@@ -14,6 +15,8 @@ const ProdSpecsCard = ({
   prodPrice = 1000,
   userColorCode = ["12cccc", "767ac1", "e660ab"],
   userColorId = [1, 2, 3],
+  userMultiColor=[["12cccc", "767ac1", "e660ab"],["12cccc", "767ac1", "e660ab"],["12cccc", "767ac1", "e660ab"]],
+  userMultiColorId=[1,2,3],
   bg = "bg-zinc-950",
 }) => {
   const navigate = useNavigate();
@@ -26,26 +29,23 @@ const ProdSpecsCard = ({
   } = useItems();
   const params = useParams();
 
-
-
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
     // console.log(qty);
   };
   const addToCart = async () => {
     const userId = localStorage.getItem("userId");
-    
+
     const orderData = {
-      
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
       color_code: selectedColor,
       qty: parseInt(qtyFromChild),
       user_id: userId,
     };
-    console.log('Sending order data:', JSON.stringify(orderData));
+    console.log("Sending order data:", JSON.stringify(orderData));
     try {
-      const response = await fetch('/api/cartitem/', {
+      const response = await fetch("/api/cartitem/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,27 +114,35 @@ const ProdSpecsCard = ({
             </p>
           </div>
           {/* User Color */}
-          <div className="flex flex-row items-center justify-center w-fit gap-x-20">
+          <div
+            className={`${
+              userColorCode.length ? "" : "hidden"
+            } flex flex-row  items-center justify-center w-fit gap-x-20`}
+          >
             <p
               className=" text-white text-base text-left"
               style={{ fontFamily: "MabryPro-Light" }}
             >
               Pick Your Color
             </p>
-
-            <p
-              className=" text-black text-base border border-solid border-l-zinc-400 rounded-3xl"
-              style={{ fontFamily: "MabryPro-Bold" }}
-            >
-              
-              <ColorDropDownMenu
-              options={userColorCode}
-              userColorid={userColorId}
-            />
-            </p>
-
-
+            <ColorDropDownMenu
+                options={userColorCode}
+                userColorid={userColorId}
+                
+              />
+            {
+              userMultiColor.length ?
+                (
+                  
+                  <MultiColorDropDownMenu
+                    
+                    userColorid={userMultiColorId}
+                    multi_options={userMultiColor}
+                  />
+                ) :<></>          
+            }  
           </div>
+
           {/* Price */}
           <div className="flex flex-row items-center justify-center w-fit gap-x-40 ">
             <p
