@@ -91,10 +91,12 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
     setSelectedColor,
     selectedColorId,
     setSelectedColorId,
+    selectedIndex,
+    setSelectedIndex,
   } = useItems();
   // console.log("ID:",userColorid);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -111,11 +113,11 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
   }, []);
 
   const handleOptionClick = (index) => {
-    // console.log("Index:", index, "userColorid:", userColorid[index]);
+    console.log("Index:", index, "userColorid:", userColorid[index]);
     setSelectedIndex(index);
     setSelectedColorId(userColorid[index]);
     setSelectedColor(multi_options[index].join(","));
-    console.log(multi_options[index].join(","))
+    console.log(multi_options[index].join(","));
     setIsOpen(false);
   };
 
@@ -135,7 +137,7 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
           onClick={() => setIsOpen(!isOpen)}
           style={getGradientStyle(multi_options[selectedIndex])}
         >
-          <span className="mr-2">{userColorid[selectedIndex]}</span>
+          <span className="mr-2">{userColorid[selectedIndex] || "Select Multi-Color"}</span>
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"

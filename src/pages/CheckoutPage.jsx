@@ -46,6 +46,15 @@ const CheckoutPage = () => {
       await createOrder(data.result.id);
     } catch (error) {
       console.error("Error placing order:", error);
+      toast.error("Error placing order. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+        theme: "dark",
+      });
      
     }
   };

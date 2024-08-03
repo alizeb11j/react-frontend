@@ -26,6 +26,8 @@ const ProdSpecsCard = ({
     setqtyFromChild,
     selectedColor,
     selectedColorId,
+    selectedIndex,
+    setSelectedIndex,
   } = useItems();
   const params = useParams();
 
@@ -197,7 +199,7 @@ const ProdSpecsCard = ({
           <button
             // to="/cart"
             onClick={addToCart}
-            className="bg-[#7bf5f380] text-white px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
+            className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
             style={{ fontFamily: "MabryPro-Bold" }}
           >
             <ToastContainer />

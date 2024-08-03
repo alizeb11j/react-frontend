@@ -14,7 +14,7 @@ export const ItemsProvider = ({ children }) => {
   const [qtyFromChild, setqtyFromChild] = useState(1);
   const [selectedColor, setSelectedColor] = useState("f4c5bf");
   const [selectedColorId, setSelectedColorId] = useState(0);
- 
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
 
 
@@ -49,6 +49,8 @@ export const ItemsProvider = ({ children }) => {
         setSelectedColor,
         selectedColorId,
         setSelectedColorId,
+        selectedIndex,
+        setSelectedIndex,
         fetchItems,
       }}
     >
