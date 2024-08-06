@@ -6,14 +6,35 @@ const SearchModal = ({ isOpen, onClose }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [dispMessage, setDispMessage] = useState("");
 
-  const handleSearch = async () => {
+  useEffect(() => {
+    const handleEsc = (event) => {
+       if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery) {
+        handleSearch(searchQuery);
+      }
+    }, 250);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
+
+  const handleSearch = async (searchQuery) => {
     try {
       const response = await fetch(`/api/items/?q=${searchQuery}`);
       const data = await response.json();
       setSearchResult(data);
       if (data.length === 0) setDispMessage("No Result Found");
-      //   console.log("Data:", data);
-      //   console.log(searchQuery);
     } catch (error) {
       console.log("Error During Search:", error);
     }
@@ -35,20 +56,13 @@ const SearchModal = ({ isOpen, onClose }) => {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => {
+              onChange={async (e) => {
                 setSearchQuery(e.target.value);
               }}
-              className="flex-grow border rounded-l px-4 py-2 rounded-xl"
+              className="flex-grow border px-4 py-2 rounded-xl"
               placeholder="Search products..."
               style={{ fontFamily: "MabryPro-Bold" }}
             />
-            <button
-              onClick={handleSearch}
-              className="bg-[#9DEAE9] text-black px-4 py-2 rounded-xl"
-              style={{ fontFamily: "MabryPro-Bold" }}
-            >
-              Search
-            </button>
           </div>
           <div
             className="text-black max-h-96 overflow-y-auto "
@@ -69,13 +83,6 @@ const SearchModal = ({ isOpen, onClose }) => {
               <p className="text-white">{`${dispMessage}`}</p>
             )}
           </div>
-          <button
-            onClick={onClose}
-            className="mt-4  bg-gray-300 text-black px-4 py-2 rounded-xl"
-            style={{ fontFamily: "MabryPro-Bold" }}
-          >
-            Close
-          </button>
         </div>
       </div>
     </>
