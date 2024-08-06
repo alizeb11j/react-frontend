@@ -22,7 +22,7 @@ export const ItemsProvider = ({ children }) => {
 
   const fetchItems = async () => {
     try {
-      const data = await fetch("/api/items/");
+      const data = await fetch(import.meta.env.VITE_API_URL+"/api/items/");
       const result = await data.json();
       // console.log(result);
       setItems(result);
