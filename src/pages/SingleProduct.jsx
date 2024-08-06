@@ -30,7 +30,7 @@ const SingleProduct = () => {
   const getItemById = async (id) => {
     try {
       const data = await fetch(
-        `import.meta.env.VITE_API_URL/api/items/?item_id=${id ?? selectedProductId}`
+        `${import.meta.env.VITE_API_URL}/api/items/?item_id=${id ?? selectedProductId}`
       );
       const result = await data.json();
 

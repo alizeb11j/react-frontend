@@ -31,7 +31,7 @@ const SearchModal = ({ isOpen, onClose }) => {
 
   const handleSearch = async (searchQuery) => {
     try {
-      const response = await fetch(`import.meta.env.VITE_API_URL/api/items/?q=${searchQuery}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/items/?q=${searchQuery}`);
       const data = await response.json();
       setSearchResult(data);
       if (data.length === 0) setDispMessage("No Result Found");
