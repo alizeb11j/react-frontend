@@ -22,7 +22,7 @@ const CartPage = () => {
       console.log("Order:", order);
 
       try {
-        const response = await fetch("/api/orderitem/", {
+        const response = await fetch(import.meta.env.VITE_API_URL+"/api/orderitem/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const CartPage = () => {
   // console.log(orderDetails)
   const fetchCartItems = async () => {
     try {
-      const data = await fetch("/api/cartitem/");
+      const data = await fetch(import.meta.env.VITE_API_URL+"/api/cartitem/");
       const result = await data.json();
       // console.log(result);
       setCartItems(result);
@@ -66,7 +66,7 @@ const CartPage = () => {
     const creationTime = localStorage.getItem("creationTime");
 
     try {
-      const response = await fetch("/api/cartitem/", {
+      const response = await fetch(import.meta.env.VITE_API_URL+"/api/cartitem/", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

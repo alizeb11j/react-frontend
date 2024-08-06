@@ -47,7 +47,7 @@ const ProdSpecsCard = ({
     };
     console.log("Sending order data:", JSON.stringify(orderData));
     try {
-      const response = await fetch("/api/cartitem/", {
+      const response = await fetch(import.meta.env.VITE_API_URL+"/api/cartitem/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
