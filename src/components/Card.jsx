@@ -1,8 +1,14 @@
 import React from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useItems } from "../ItemsContext";
 
-const Card = ({ img_name, description, price, bg = "bg-zinc-950" }) => {
+const Card = ({ img_name, description, price, itemId, bg = "bg-zinc-950" }) => {
+  const { setSelectedProductId } = useItems();
+
   const navigate = useNavigate();
+
+
+
   return (
     <>
       <div className={`${bg} px-4 rounded-lg shadow-md `}>
@@ -13,12 +19,14 @@ const Card = ({ img_name, description, price, bg = "bg-zinc-950" }) => {
             alt="Description"
             className="w-60 h-72 object-cover rounded-lg"
             onClick={() => {
-              navigate("/prod/1");
+              setSelectedProductId(itemId);
+              navigate(`/prod/${itemId}`);
             }}
           />
           {/* Go to Single Product Page */}
           <Link
-            to="/prod/1"
+            to={`/prod/${itemId}`}
+            onClick={() => setSelectedProductId(itemId)}
             className=" font-light text-white text-xl  opacity-0 group-hover:opacity-100 transition-opacity delay-200 duration-250 ease-in-out text-center "
             style={{ fontFamily: "MabryPro-Light" }}
           >

@@ -17,7 +17,7 @@ const AboutPage = () => {
         <div className="flex flex-col container bg-zinc-950  mx-auto py-5 ">
           <div className=" flex flex-col-reverse justify-center items-center gap-x-5 md:flex-row">
             <p
-              className="w-4/6 text-white  text-sm md:text-base font-medium"
+              className="w-4/6 text-white  text-lg md:text-xl font-medium text-justify"
               style={{ fontFamily: "MabryPro-Medium" }}
             >
               Founded in the 1970s, Najaf Traders started as a humble operation
@@ -41,7 +41,7 @@ const AboutPage = () => {
             />
 
             <p
-              className="w-4/6 text-white text-sm md:text-base font-medium"
+              className="w-4/6 text-white text-lg md:text-xl font-medium text-justify"
               style={{ fontFamily: "MabryPro-Medium" }}
             >
               In 1980, his son Najaf Ali joined and the business expanded
@@ -56,7 +56,7 @@ const AboutPage = () => {
           </div>
           <div className=" flex flex-col-reverse justify-center items-center gap-x-5 md:flex-row">
             <p
-              className="w-4/6 text-white text-sm md:text-base font-medium"
+              className="w-4/6 text-white text-lg md:text-xl font-medium text-justify"
               style={{ fontFamily: "MabryPro-Medium" }}
             >
               In 2010, under the leadership of the current Director and CEO, Ali

@@ -6,13 +6,14 @@ import facebook_footer from "../assets/images/facebook_footer.png";
 import location_footer from "../assets/images/location_footer.png";
 import mail_footer from "../assets/images/mail_footer.png";
 import phone_footer from "../assets/images/phone_footer.png";
+import whatsapp_footer from "../assets/images/whatsapp_footer.png";
 
 const Footer = () => {
   return (
     <>
       <div
         id="footer"
-        className="h-48 items-stretch flex flex-row justify-between pt-5 [background:linear-gradient(180deg,rgb(0,0,0)_68%,rgb(141,58,173)_100%)] -mx-30"
+        className="h-52 items-stretch flex flex-row justify-between pt-5 [background:linear-gradient(180deg,rgb(0,0,0)_68%,rgb(141,58,173)_100%)] -mx-30"
       >
         {/* Left Side */}
         <div>
@@ -23,7 +24,18 @@ const Footer = () => {
             We are Social
           </h1>
           {/* Start of Flex in which multiple items are arranged in a Col */}
-          <div className="flex flex-col space-y-5 pl-5 ">
+          <div className="flex flex-col space-y-3 pl-5 ">
+            <div className="flex flex-row space-x-3">
+              <img className=" w-6 h-6" src={whatsapp_footer} alt="whatsapp" />
+
+              <Link
+                className="font-light text-white text-base"
+                style={{ fontFamily: "MabryPro-Light" }}
+                to="https://wa.me/923004381214"
+              >
+                +923004381214
+              </Link>
+            </div>
             <div className="flex flex-row space-x-3">
               <img className=" w-6 h-6" src={instagram_footer} alt="insta" />
 
