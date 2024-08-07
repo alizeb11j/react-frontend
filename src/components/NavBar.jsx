@@ -69,9 +69,9 @@ const NavBar = () => {
               <button onClick={() => setIsSearchOpen(true)}>
                 <img className="h-8" src={search_icon} alt="Search Icon" />
               </button>
-              <a href="/cart">
+              <Link to="/cart">
                 <img className="h-8" src={cart_icon} alt="Cart Icon" />
-              </a>
+              </Link>
               {/* <!-- Hamburger Icon --> */}
 
               <button
