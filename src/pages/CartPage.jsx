@@ -121,7 +121,7 @@ const CartPage = () => {
 
   return (
     <>
-      <div className="bg-zinc-900 h-screen">
+      <div className={`bg-zinc-900 ${cartItems ? "" : "h-screen"}`}>
         <h1
           className="text-3xl text-center text-white font-bold py-5 mx-auto"
           style={{ fontFamily: "MabryPro-Light" }}
