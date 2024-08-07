@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import CartCard from "../components/CartCard";
 
 const CartPage = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [itemDetails, setItemDetails] = useState({});
   const [orderDetails, setOrderDetails] = useState([]);
@@ -22,7 +23,7 @@ const CartPage = () => {
       console.log("Order:", order);
 
       try {
-        const response = await fetch(import.meta.env.VITE_API_URL+"/api/orderitem/", {
+        const response = await fetch(import.meta.env.VITE_API_URL+"api/orderitem/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +48,7 @@ const CartPage = () => {
   // console.log(orderDetails)
   const fetchCartItems = async () => {
     try {
-      const data = await fetch(import.meta.env.VITE_API_URL+"/api/cartitem/");
+      const data = await fetch(import.meta.env.VITE_API_URL+"api/cartitem/");
       const result = await data.json();
       // console.log(result);
       setCartItems(result);
@@ -66,7 +67,7 @@ const CartPage = () => {
     const creationTime = localStorage.getItem("creationTime");
 
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL+"/api/cartitem/", {
+      const response = await fetch(import.meta.env.VITE_API_URL+"api/cartitem/", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -113,13 +114,14 @@ const CartPage = () => {
     // fetchCartItems();
 
     window.location.reload();
+    navigate("/cart");
 
     // setitemDetails({}); // Reset prices when an item is deleted
   };
 
   return (
     <>
-      <div className="bg-zinc-900">
+      <div className="bg-zinc-900 h-screen">
         <h1
           className="text-3xl text-center text-white font-bold py-5 mx-auto"
           style={{ fontFamily: "MabryPro-Light" }}

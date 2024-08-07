@@ -30,7 +30,9 @@ const SingleProduct = () => {
   const getItemById = async (id) => {
     try {
       const data = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/items/?item_id=${id ?? selectedProductId}`
+        `${import.meta.env.VITE_API_URL}api/items/?item_id=${
+          id ?? selectedProductId
+        }`
       );
       const result = await data.json();
 
@@ -107,7 +109,8 @@ const SingleProduct = () => {
     <>
       <section
         id="single_prod"
-        className="pt-5 space-y-10 text-white text-3xl text-center bg-zinc-950"
+        className={`pt-5 space-y-10 text-white text-3xl text-center bg-zinc-950 
+          ${item ? "" : "h-screen"}`}
       >
         {item ? (
           <div className="flex flex-col justify-center align-center  md:flex-row">
@@ -157,7 +160,7 @@ const SingleProduct = () => {
           </div>
         ) : (
           <CircleLoader
-            className="flex justify-center align-center mx-auto"
+            className=" flex justify-center align-center mx-auto my-auto"
             color="#c200e9"
             loading
             size={100}

@@ -18,7 +18,7 @@ const CartCard = ({
   const [qtyFromChild, setqtyFromChild] = useState(prodQty);
   const getItemById = async () => {
     try {
-      const data = await fetch(`${import.meta.env.VITE_API_URL}/api/items/?item_id=${prodId}`);
+      const data = await fetch(`${import.meta.env.VITE_API_URL}api/items/?item_id=${prodId}`);
       const result = await data.json();
       // console.log("Result",result[0])
       setItem(result[0]);
@@ -69,7 +69,7 @@ const CartCard = ({
     const creationTime = localStorage.getItem("creationTime");
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}&userId=${userId}&creationTime=${creationTime}`,
+        `${import.meta.env.VITE_API_URL}api/cartitem/?item_id=${prodId}&color_code_id=${prodColor_id}&userId=${userId}&creationTime=${creationTime}`,
         {
           method: "DELETE",
           headers: {

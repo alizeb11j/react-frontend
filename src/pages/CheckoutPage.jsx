@@ -27,7 +27,7 @@ const CheckoutPage = () => {
   const addToOrder = async (userData) => {
     console.log("Sending user data:", JSON.stringify(userData));
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL+"/api/users/", {
+      const response = await fetch(import.meta.env.VITE_API_URL+"api/users/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const CheckoutPage = () => {
         user_id: parseInt(userId), 
       };
       console.log("Orderdata:",orderData)
-      const response = await fetch(import.meta.env.VITE_API_URL+"/api/orders/", {
+      const response = await fetch(import.meta.env.VITE_API_URL+"api/orders/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

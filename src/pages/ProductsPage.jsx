@@ -12,6 +12,7 @@ import {
   TabPanel,
   ListItemSuffix,
 } from "@material-tailwind/react";
+import CircleLoader from "react-spinners/CircleLoader";
 
 const ProductsPage = () => {
   const { items, loading, error } = useItems();
@@ -87,7 +88,7 @@ const ProductsPage = () => {
         </h1>
         {/* Featured Images */}
         <div className="flex flex-col justify-center mx-auto px-5 pb-10 gap-5 max-w-md md:flex-row">
-          {img_list.map((img,id) => (
+          {img_list.map((img, id) => (
             <img
               key={id}
               className="h-80 space-x-5 px-5"
@@ -124,14 +125,16 @@ const ProductsPage = () => {
                 value={value}
                 style={{ fontFamily: "MabryPro-Medium" }}
               >
-               
-                <HomeCards
-                  items={items.filter(
-                    (item) => item.category === label
-                  )}
-                  
-
-                />
+                {loading ? (
+                  <div className="flex justify-center items-center h-64">
+                    <CircleLoader color="#c200e9" loading={loading} size={60} />
+                  </div>
+                ) : (
+                  <HomeCards
+                    items={items.filter((item) => item.category === label)}
+                  />
+                )}
+                
               </TabPanel>
             ))}
           </TabsBody>

@@ -1,87 +1,3 @@
-// import React, { useState} from "react";
-
-// import { useItems } from "../ItemsContext";
-
-// const MultiColorDropDownMenu = ({
-
-//   userColorid,
-//   multi_options = [[""]],
-//   bg = "bg-[#838285]",
-// }) => {
-//   console.log(multi_options);
-//   const {
-//     selectedColor,
-//     setSelectedColor,
-//     selectedColorId,
-//     setSelectedColorId,
-//   } = useItems();
-//   console.log("ID:",userColorid.findIndex((x) => x === 2001));
-//   const [multiSelectedColors, setMultiSelectedColors] = useState([]);
-//   let selectedColorid_index = 0;
-
-//   const getGradientStyle = (colors) => {
-//     const gradientColors = colors.map(color => `#${color.replace('#', '')}`).join(', ');
-//     // console.log("gradientColors:",gradientColors)
-//     return `linear-gradient(to left, ${gradientColors})`;
-//   };
-
-//   const handleMultiColorChange = (e) => {
-//     const selectedIndex = multi_options.findIndex(option =>
-//       option.join(',') === e.target.value
-//     );
-//     console.log("selectedIndex:",selectedIndex)
-//     if (selectedIndex !== -1) {
-//       setSelectedColorId(userColorid[selectedIndex]);
-//       console.log("userColorid[selectedIndex]:",userColorid[selectedIndex])
-//       setSelectedColor(multi_options[selectedIndex].join(','));
-//       console.log("multi_options[selectedIndex]:",multi_options[selectedIndex].join(','))
-//     }
-
-//   };
-
-//   return (
-//     <>
-
-//         <div className="multidropDownMenu ">
-//         <select
-//           className={
-//             "rounded-3xl focus:box-shadow-none focus:border-0 focus:shadow-none focus:outline-none [-webkit-appearance:none]"
-//           }
-//           name="item-selected"
-//           value={multi_options[0][0]}
-//           onChange={handleMultiColorChange}
-//           style={{ backgroundColor: `#${multi_options[0][0]}` }}
-//         >
-//           {multi_options.map((option_value, id) => (
-
-//             <option
-//               key={id}
-//               style={{
-//                 background: getGradientStyle(option_value),
-//                 fontFamily: "MabryPro-Medium",
-//                 backgroundColor: getGradientStyle(option_value),
-//               }}
-//               className="rounded-3xl"
-//               value={option_value.join(',')}
-//             >
-//               {`Multi-color ${id + 1}`}
-
-//                 {/* { 1} */}
-//               </option>
-//           )
-
-//         )
-//           }
-//         </select>
-
-//         </div>
-
-//     </>
-//   );
-// };
-
-// export default MultiColorDropDownMenu;
-
 import React, { useState, useRef, useEffect } from "react";
 import { useItems } from "../ItemsContext";
 
@@ -93,6 +9,8 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
     setSelectedColorId,
     selectedIndex,
     setSelectedIndex,
+    multi_flag,
+    setMulti_flag,
   } = useItems();
   // console.log("ID:",userColorid);
   const [isOpen, setIsOpen] = useState(false);
@@ -114,6 +32,7 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
 
   const handleOptionClick = (index) => {
     console.log("Index:", index, "userColorid:", userColorid[index]);
+    setMulti_flag(true);
     setSelectedIndex(index);
     setSelectedColorId(userColorid[index]);
     setSelectedColor(multi_options[index].join(","));
@@ -137,7 +56,7 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
           onClick={() => setIsOpen(!isOpen)}
           style={getGradientStyle(multi_options[selectedIndex])}
         >
-          <span className="mr-2">{userColorid[selectedIndex] || "Select Multi-Color"}</span>
+          <span className="mr-2">{multi_flag ?userColorid[selectedIndex]:"Select Multi-Color"}</span>
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"

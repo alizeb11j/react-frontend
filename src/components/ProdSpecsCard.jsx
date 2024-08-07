@@ -15,8 +15,12 @@ const ProdSpecsCard = ({
   prodPrice = 1000,
   userColorCode = ["12cccc", "767ac1", "e660ab"],
   userColorId = [1, 2, 3],
-  userMultiColor=[["12cccc", "767ac1", "e660ab"],["12cccc", "767ac1", "e660ab"],["12cccc", "767ac1", "e660ab"]],
-  userMultiColorId=[1,2,3],
+  userMultiColor = [
+    ["12cccc", "767ac1", "e660ab"],
+    ["12cccc", "767ac1", "e660ab"],
+    ["12cccc", "767ac1", "e660ab"],
+  ],
+  userMultiColorId = [1, 2, 3],
   bg = "bg-zinc-950",
 }) => {
   const navigate = useNavigate();
@@ -30,15 +34,17 @@ const ProdSpecsCard = ({
     setSelectedIndex,
   } = useItems();
   const params = useParams();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleQtyFromChild = (qty) => {
     setqtyFromChild(qty);
     // console.log(qty);
   };
   const addToCart = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     const userId = localStorage.getItem("userId");
-    if (!qtyFromChild)
-      return
+    if (!qtyFromChild) {  setIsSubmitting(false);return;} 
     const orderData = {
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
@@ -48,13 +54,16 @@ const ProdSpecsCard = ({
     };
     console.log("Sending order data:", JSON.stringify(orderData));
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL+"/api/cartitem/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + "api/cartitem/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -64,7 +73,7 @@ const ProdSpecsCard = ({
       console.log("Item Added to Cart placed successfully:", result);
       toast.success("Item Added to Cart", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -74,11 +83,13 @@ const ProdSpecsCard = ({
           navigate("/cart");
         },
       });
-
+      console.log("Item added")
       // Handle success (e.g., show a success message, clear form, etc.)
     } catch (error) {
       console.error("Error placing order:", error);
       // Handle error (e.g., show error message to user)
+    }finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -129,21 +140,17 @@ const ProdSpecsCard = ({
               Pick Your Color
             </p>
             <ColorDropDownMenu
-                options={userColorCode}
-                userColorid={userColorId}
-                
+              options={userColorCode}
+              userColorid={userColorId}
+            />
+            {userMultiColor.length ? (
+              <MultiColorDropDownMenu
+                userColorid={userMultiColorId}
+                multi_options={userMultiColor}
               />
-            {
-              userMultiColor.length ?
-                (
-                  
-                  <MultiColorDropDownMenu
-                    
-                    userColorid={userMultiColorId}
-                    multi_options={userMultiColor}
-                  />
-                ) :<></>          
-            }  
+            ) : (
+              <></>
+            )}
           </div>
 
           {/* Price */}
@@ -200,11 +207,12 @@ const ProdSpecsCard = ({
           <button
             // to="/cart"
             onClick={addToCart}
+            disabled={isSubmitting}
             className="bg-[#7bf5f380] text-black px-4 py-2 rounded hover:bg-[#55a5a4] focus:outline-none focus:ring-2 focus:ring-[#7bf5f3] focus:ring-offset-2 focus:ring-offset-black  text-base justify-center  items-center  "
             style={{ fontFamily: "MabryPro-Bold" }}
           >
             <ToastContainer />
-            Add to Cart
+            {isSubmitting ? 'Adding...' : 'Add to Cart'}
           </button>
         </div>
       </div>
