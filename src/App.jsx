@@ -17,15 +17,14 @@ import CheckoutPage from "./pages/CheckoutPage";
 import { ItemsProvider } from "./ItemsContext";
 
 import { Analytics } from "@vercel/analytics/react";
-import SessionManager from "./components/SessionManager";
+
 
 const App = () => {
-  <Analytics />;
-  // <SessionManager />
+  
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
-        {/* <Route path="/sess" element={<SessionManager />} /> */}
         <Route path="/test" element={<TestComponent />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/cart" element={<CartPage />} />
@@ -52,7 +51,12 @@ const App = () => {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />;
+      <Analytics />;
+    </>
+  ) 
 };
 
 export default App;
