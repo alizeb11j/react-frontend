@@ -44,7 +44,10 @@ const ProdSpecsCard = ({
     if (isSubmitting) return;
     setIsSubmitting(true);
     const userId = localStorage.getItem("userId");
-    if (!qtyFromChild) {  setIsSubmitting(false);return;} 
+    if (!qtyFromChild) {
+      setIsSubmitting(false);
+      return;
+    }
     const orderData = {
       item_id: parseInt(selectedProductId),
       color_code_id: parseInt(selectedColorId),
@@ -83,12 +86,12 @@ const ProdSpecsCard = ({
           navigate("/cart");
         },
       });
-      console.log("Item added")
+      console.log("Item added");
       // Handle success (e.g., show a success message, clear form, etc.)
     } catch (error) {
       console.error("Error placing order:", error);
       // Handle error (e.g., show error message to user)
-    }finally {
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -131,7 +134,7 @@ const ProdSpecsCard = ({
           <div
             className={`${
               userColorCode.length ? "" : "hidden"
-            } flex flex-row  items-center justify-center w-fit gap-x-20`}
+            } flex flex-row items-center justify-center w-fit gap-x-4 md:gap-x-20 md:gap-y-10`}
           >
             <p
               className=" text-white text-base text-left"
@@ -143,6 +146,12 @@ const ProdSpecsCard = ({
               options={userColorCode}
               userColorid={userColorId}
             />
+            <p
+              className=" text-white text-base text-left"
+              style={{ fontFamily: "MabryPro-Light" }}
+            >
+              OR
+            </p>
             {userMultiColor.length ? (
               <MultiColorDropDownMenu
                 userColorid={userMultiColorId}
@@ -212,7 +221,7 @@ const ProdSpecsCard = ({
             style={{ fontFamily: "MabryPro-Bold" }}
           >
             <ToastContainer />
-            {isSubmitting ? 'Adding...' : 'Add to Cart'}
+            {isSubmitting ? "Adding..." : "Add to Cart"}
           </button>
         </div>
       </div>
