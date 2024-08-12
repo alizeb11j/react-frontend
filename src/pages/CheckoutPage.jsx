@@ -27,13 +27,16 @@ const CheckoutPage = () => {
   const addToOrder = async (userData) => {
     console.log("Sending user data:", JSON.stringify(userData));
     try {
-      const response = await fetch(import.meta.env.VITE_API_URL+"api/users/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + "api/users/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -41,7 +44,7 @@ const CheckoutPage = () => {
 
       const data = await response.json();
       console.log("User Added successfully. User ID:", data.result.id);
-      
+
       // After adding the user, create the orders
       await createOrder(data.result.id);
     } catch (error) {
@@ -55,7 +58,6 @@ const CheckoutPage = () => {
         progress: undefined,
         theme: "dark",
       });
-     
     }
   };
 
@@ -65,16 +67,19 @@ const CheckoutPage = () => {
         order_status: true,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
-        user_id: parseInt(userId), 
+        user_id: parseInt(userId),
       };
-      console.log("Orderdata:",orderData)
-      const response = await fetch(import.meta.env.VITE_API_URL+"api/orders/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
+      console.log("Orderdata:", orderData);
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + "api/orders/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -90,8 +95,10 @@ const CheckoutPage = () => {
         pauseOnHover: true,
         progress: undefined,
         theme: "dark",
+        onClose: () => {
+          navigate("/");
+        },
       });
-
     } catch (error) {
       console.error("Error creating order:", error);
       toast.error("Error placing order. Please try again.", {
@@ -138,8 +145,6 @@ const CheckoutPage = () => {
         address: formData.address,
       };
       addToOrder(userData);
-
-
     }
   };
 

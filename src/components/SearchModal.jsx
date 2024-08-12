@@ -83,6 +83,13 @@ const SearchModal = ({ isOpen, onClose }) => {
               <p className="text-white">{`${dispMessage}`}</p>
             )}
           </div>
+          <button
+            onClick={onClose}
+            className="mt-4  bg-gray-300 text-black px-4 py-2 rounded-xl"
+            style={{ fontFamily: "MabryPro-Bold" }}
+          >
+            Close
+          </button>
         </div>
       </div>
     </>
