@@ -74,9 +74,9 @@ const MultiColorDropDownMenu = ({ userColorid, multi_options = [[""]] }) => {
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
           <div
-            className="py-1"
+            className="py-1 max-h-60 overflow-y-auto"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
