@@ -6,7 +6,7 @@ import kayseria_logo from "../assets/images/kayseria_logo.png";
 import sapphire_logo from "../assets/images/sapphire_logo.png";
 import faiza_saq_logo from "../assets/images/faiza_saq_logo.png";
 import outfitters_logo from "../assets/images/outfitters_logo.png";
-import home_1 from "../assets/images/home_1.png";
+import home_1 from "../assets/images/home_1.jpg";
 import home_2 from "../assets/images/home_2.jpg";
 import home_3 from "../assets/images/home_3.jpg";
 import home_4 from "../assets/images/home_4.jpg";

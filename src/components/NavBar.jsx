@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo_gp from "../assets/images/logo-group.png";
+import logo_gp from "../assets/images/logo-group.webp";
 import search_icon from "../assets/images/Search.png";
 import cart_icon from "../assets/images/shopping-cart.png";
 import SessionManager from "./SessionManager";
