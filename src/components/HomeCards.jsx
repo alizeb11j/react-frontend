@@ -18,7 +18,7 @@ const HomeCards = ({ items }) => {
         <Card
           key={id}
           img_name={item.images_item[0].img_url}
-          description={item.description.substring(0, 55)}
+          name={item.name}
           price={`Rs. ${item.item_pack_price[0].price ?? ''}`}
           itemId={item.id}
         ></Card>

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useItems } from "../ItemsContext";
 
-const Card = ({ img_name, description, price, itemId, bg = "bg-zinc-950" }) => {
+const Card = ({ img_name, name, price, itemId, bg = "bg-zinc-950" }) => {
   const { setSelectedProductId } = useItems();
 
   const navigate = useNavigate();
@@ -34,13 +34,13 @@ const Card = ({ img_name, description, price, itemId, bg = "bg-zinc-950" }) => {
           </Link>
         </div>
 
-        {/* Description + Price */}
-        <div className="flex flex-row items-center justify-center w-60">
+        {/* Name + Price */}
+        <div className="flex flex-row items-center justify-center w-60 gap-x-5">
           <p
             className="font-light text-white text-base text-left"
             style={{ fontFamily: "MabryPro-Light" }}
           >
-            {description}
+            {name}
           </p>
           <p
             className=" font-bold text-white text-base"
