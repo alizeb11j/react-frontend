@@ -58,7 +58,7 @@ const SingleProduct = () => {
     // if (!item || !item?.colors) return [];
 
     item.colors.map((color) => {
-      if (color.id) Color_id_list.push(color.id);
+      if (color.color_id) Color_id_list.push(color.color_id);
     });
     return Color_id_list;
   }
@@ -97,7 +97,7 @@ const SingleProduct = () => {
       ) {
         // const cleanedColors = color.multi_color.map(c => c.replace('#', ''));
 
-        multiColoridList.push(color.id);
+        multiColoridList.push(color.color_id);
       }
     });
 
