@@ -14,6 +14,7 @@ import ContactForm from "./pages/ContactForm";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import ShadeCardPage from "./pages/ShadeCardPage";
 import { ItemsProvider } from "./ItemsContext";
 
 import { Analytics } from "@vercel/analytics/react";
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/shade" element={<ShadeCardPage />} />
         <Route
           path="/products"
           element={

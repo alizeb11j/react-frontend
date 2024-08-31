@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import prod_img1 from "../assets/images/prod_img1.png";
 import prod_img2 from "../assets/images/prod_img2.png";
@@ -15,7 +16,9 @@ import {
 import CircleLoader from "react-spinners/CircleLoader";
 
 const ProductsPage = () => {
-  const { items, loading, error } = useItems();
+  const { items, loading, setLoading, error } = useItems();
+  const [activeTab, setActiveTab] = useState("Embroidery Thread");
+  const [tabData, setTabData] = useState({});
   // console.log("IP:",itemPack);
   // console.log(images);
   const data = [
@@ -35,8 +38,8 @@ const ProductsPage = () => {
       id: 4,
     },
     {
-      label: "Paint",
-      value: "paint",
+      label: "ButterPaper",
+      value: "butterpaper",
       id: 3,
     },
     {
@@ -65,14 +68,34 @@ const ProductsPage = () => {
       id: 9,
     },
     {
-      label: "Silai Nalki",
+      label: "Silai",
       value: "silai",
       id: 10,
     },
   ];
 
   const img_list = [prod_img1, prod_img2];
-
+  useEffect(() => {
+    // Fetch data for the initial tab
+    fetchTabData("Embroidery Thread");
+  }, []);
+  const fetchTabData = (tabValue) => {
+    if (!tabData[tabValue]) {
+      // setLoading(true);
+      // Fetch data for the selected tab
+      // and update the tabData state
+      const filteredItems = items.filter(
+        (item) =>
+          item.category === data.find((tab) => tab.value === tabValue).label
+      );
+      setTabData((prevData) => ({
+        ...prevData,
+        [tabValue]: filteredItems,
+      }));
+      // setLoading(false);
+    }
+    setActiveTab(tabValue);
+  };
   return (
     <>
       <section
@@ -99,7 +122,7 @@ const ProductsPage = () => {
         </div>
 
         <Tabs
-          value="emb_thread"
+          value={activeTab}
           className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           <TabsHeader
@@ -113,6 +136,7 @@ const ProductsPage = () => {
                 key={value}
                 value={value}
                 style={{ fontFamily: "MabryPro-Medium" }}
+                onClick={() => fetchTabData(value)}
               >
                 {label}
               </Tab>
@@ -125,14 +149,12 @@ const ProductsPage = () => {
                 value={value}
                 style={{ fontFamily: "MabryPro-Medium" }}
               >
-                {loading ? (
+                {tabData[value] ? (
+                  <HomeCards items={tabData[value]} />
+                ) : (
                   <div className="flex justify-center items-center h-64">
                     <CircleLoader color="#c200e9" loading={loading} size={60} />
                   </div>
-                ) : (
-                  <HomeCards
-                    items={items.filter((item) => item.category === label)}
-                  />
                 )}
               </TabPanel>
             ))}
