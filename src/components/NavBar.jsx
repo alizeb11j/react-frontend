@@ -48,6 +48,13 @@ const NavBar = () => {
                 Products
               </Link>
               <Link
+                className="hidden md:flex no-underline text-xl"
+                style={{ fontFamily: "MabryPro-Bold" }}
+                to="/shade"
+              >
+                Shade Cards
+              </Link>
+              <Link
                 className="hidden md:flex no-underline text-xl "
                 style={{ fontFamily: "MabryPro-Bold" }}
                 to="/about"
@@ -63,7 +70,7 @@ const NavBar = () => {
               </Link>
             </div>
             <div
-              className="flex md:shrink-0  gap-4 mx-0 pl-0 pr-8"
+              className="flex md:shrink-0  gap-4 mx-0 pl-5 pr-8"
               style={{ left: "-8px" }}
             >
               <button onClick={() => setIsSearchOpen(true)}>
@@ -116,6 +123,13 @@ const NavBar = () => {
                 to="/products"
               >
                 Products
+              </Link>
+              <Link
+                className="text-white"
+                style={{ fontFamily: "MabryPro-Light" }}
+                to="/shade"
+              >
+                Shade Cards
               </Link>
               <Link
                 className="text-white"

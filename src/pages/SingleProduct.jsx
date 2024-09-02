@@ -15,7 +15,7 @@ const SingleProduct = () => {
   // For Getting Id of Page From URL
   const params = useParams();
   const { items, selectedProductId, loading, error } = useItems();
-  // For Similar Items Section
+  // Filter items for the "Similar Items" section
   const Filtered_items = items.filter(
     (it) =>
       it?.category === item?.category &&
@@ -24,6 +24,7 @@ const SingleProduct = () => {
       item?.category
   );
 
+  // Fetch item data when component mounts or URL changes
   useEffect(() => {
     getItemById(params.id);
   }, [selectedProductId, location]);
@@ -42,6 +43,7 @@ const SingleProduct = () => {
     }
   };
 
+  // Helper function to extract color codes from item
   function get_color_code(item) {
     let Color_code_list = [];
     if (!item || !item?.colors) return [];
@@ -53,6 +55,7 @@ const SingleProduct = () => {
     return Color_code_list;
   }
 
+  // Helper function to extract color IDs from item
   function get_color_id(item) {
     let Color_id_list = [];
     // if (!item || !item?.colors) return [];
@@ -63,6 +66,7 @@ const SingleProduct = () => {
     return Color_id_list;
   }
 
+  // Helper function to extract multi-color information from item
   function get_multi_color(item) {
     // console.log(item)
 
@@ -84,6 +88,8 @@ const SingleProduct = () => {
     // console.log(multiColorList);
     return multiColorList;
   }
+
+  // Helper function to extract multi-color IDs from item
   function get_multi_color_id(item) {
     // console.log(item)
 
@@ -114,7 +120,7 @@ const SingleProduct = () => {
       >
         {item ? (
           <div className="flex flex-col justify-center align-center  md:flex-row">
-            {/* (Left side) Carousal of Product Img */}
+            {/* Product Image Carousel */}
             <div className=" max-w-96 p-5 justify-center align-center mx-auto rounded-2xl">
               <Carousel
                 emulateTouch={true}
@@ -138,8 +144,7 @@ const SingleProduct = () => {
                 ))}
               </Carousel>
             </div>
-            {/* (Right side) Product Description */}
-
+            {/* Product Description */}
             <div
               className=" mx-auto "
               style={{ width: "80%", maxWidth: "40rem" }}
@@ -159,6 +164,7 @@ const SingleProduct = () => {
             </div>
           </div>
         ) : (
+          // Show loading spinner if item is not yet loaded
           <CircleLoader
             className=" flex justify-center align-center mx-auto my-auto"
             color="#c200e9"
@@ -167,6 +173,7 @@ const SingleProduct = () => {
           />
         )}
 
+        {/* Similar Items Section */}
         {Filtered_items ? (
           <div className="bg-zinc-950  space-y-10 ">
             <p

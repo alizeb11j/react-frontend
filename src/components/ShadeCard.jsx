@@ -19,6 +19,8 @@ import polka1 from "../assets/images/polka1.jpg";
 import polka2 from "../assets/images/polka2.jpg";
 import polka3 from "../assets/images/polka3.jpg";
 import polka4 from "../assets/images/polka4.jpg";
+import polka5 from "../assets/images/polka5.jpg";
+import polka6 from "../assets/images/polka6.jpg";
 import ss1 from "../assets/images/ss1.jpg";
 import ss2 from "../assets/images/ss2.jpg";
 import ss3 from "../assets/images/ss3.jpg";
@@ -29,7 +31,7 @@ const ShadeCard = ({ id, value }) => {
   const bfg_list = [bfg1, bfg2, bfg3, bfg4];
   const bfn_list = [bfn1, bfn2, bfn3, bfn4, bfn5, bfn6];
   const gc_list = [gc1, gc2, gc3, gc4, gc5, gc6];
-  const polka_list = [polka1, polka2, polka3, polka4];
+  const polka_list = [polka1, polka2, polka3, polka4,polka5,polka6];
   const ss_list = [ss1, ss2, ss3, ss4];
   const shade_list = [ss_list, polka_list, gc_list, bfn_list, bfg_list];
 
@@ -46,11 +48,11 @@ const ShadeCard = ({ id, value }) => {
         showStatus={false}
       >
         {shade_list[id - 1].map((img, id) => (
-          <div className="rounded-2xl">
+          <div className=" rounded-2xl">
             <img
               key={id}
-              className=" min-w-40"
-              style={{ maxHeight: "400px", maxWidth: "400px" }}
+              className=" min-w-40 max-w-96 "
+              style={{ maxHeight: "700px", maxWidth: "700px" }}
               src={img}
             />
           </div>
